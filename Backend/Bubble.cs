@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Logging;
+using Microsoft.Azure.Functions.Worker.Extensions.OpenAI.TextCompletion;
 
 namespace RealityHack25.MindBubble.Function
 {
@@ -12,6 +13,20 @@ namespace RealityHack25.MindBubble.Function
         public Bubble(ILogger<Bubble> logger)
         {
             _logger = logger;
+        }
+
+        [Function(nameof(WhoIs))]
+        public IActionResult WhoIs([HttpTrigger(AuthorizationLevel.Function, Route = "whois/{name}")] HttpRequest req,
+        [TextCompletionInput("Who is {name}?", Model = "%CHAT_MODEL_DEPLOYMENT_NAME%", Temperature ="1")] TextCompletionResponse response)
+        {
+            if (!String.IsNullOrEmpty(response.Content))
+            {
+                return new OkObjectResult(response.Content);
+            }
+            else
+            {
+                return new NotFoundObjectResult("Something went wrong.");
+            }
         }
 
         [Function("Bubble")]
