@@ -111,19 +111,13 @@ namespace RealityHack25.MindBubble.Function
                 if (gptResponse.IsSuccessStatusCode)
                 {
                     var responseData = Newtonsoft.Json.JsonConvert.DeserializeObject<GptResponse>(await gptResponse.Content.ReadAsStringAsync());
-                    Console.WriteLine(responseData);
-                    return new OkObjectResult(responseData.Choices[0].Message.Content);
+                    var content = responseData?.Choices[0].Message.Content;
+                    content = content?.Replace("```json", "").Replace("```", "");
+                    return new OkObjectResult(content);
                 }
-                else
-                {
-                    _logger.LogError($"Error: {gptResponse.StatusCode}, {gptResponse.ReasonPhrase}");
-                    return new StatusCodeResult(500);
-                }
+                _logger.LogError($"Error: {gptResponse.StatusCode}, {gptResponse.ReasonPhrase}");
+                return new StatusCodeResult(500);
             }
-
-            // Extract and return the response
-            _logger.LogInformation("C# HTTP trigger function processed a request.");
-            return new StatusCodeResult(500);
         }
 
         private string GeneratePrompt(string[] posts)
