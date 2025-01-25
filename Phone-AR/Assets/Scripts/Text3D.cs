@@ -51,7 +51,7 @@ public class Text3D : MonoBehaviour
         if (totalHeight > maxHeight)
         {
             Debug.LogError("Text is too tall to fit within the collider.");
-            return;
+            //return;Display anyway..
         }
 
         float startY = 0 + totalHeight / 2f - LineHeight / 2f;

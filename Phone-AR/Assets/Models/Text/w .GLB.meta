@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cff7af3dc09c681498288195c38c2c45
+guid: 028b41deba58705418dd6654c5286395
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -29,22 +29,8 @@ ScriptedImporter:
   - type: 2
     code: 20
     messages:
-    - MSFT_packing_normalRoughnessMetallic
+    - KHR_materials_specular
   - type: 2
     code: 20
     messages:
-    - MSFT_texture_dds
-  - type: 2
-    code: 20
-    messages:
-    - MSFT_lod
-  - type: 0
-    code: 26
-    messages:
-    - 6
-    - 
-  - type: 0
-    code: 26
-    messages:
-    - 7
-    - 
+    - KHR_materials_ior

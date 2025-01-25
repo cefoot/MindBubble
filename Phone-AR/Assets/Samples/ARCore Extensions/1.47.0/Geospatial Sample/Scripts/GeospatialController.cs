@@ -50,10 +50,12 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
 #if UNITY_ANDROID
 
     using UnityEngine.Android;
+#endif
     using System.Net.Http;
     using TMPro;
     using Newtonsoft.Json;
-#endif
+    using UnityEngine.Events;
+    using UnityEngine.Rendering.Universal;
 
     /// <summary>
     /// Controller for Geospatial sample.
@@ -62,6 +64,8 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
         Justification = "Bypass source check.")]
     public class GeospatialController : MonoBehaviour
     {
+
+        public static GeospatialController Instance { get; private set; }
         [Header("AR Components")]
 
         /// <summary>
@@ -111,7 +115,7 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
 
         [Header("Prefabs")]
 
-        public GameObject BubblePrefab;
+        public BubbleContent BubblePrefab;
 
         [Header("UI Elements")]
 
@@ -196,6 +200,12 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
         /// Text displaying debug information, only activated in debug build.
         /// </summary>
         public Text DebugText;
+
+        [Header("DEBUG")]
+
+        public UnityEvent ActivateDebug;
+        public UnityEvent DisableDebug;
+
 
         /// <summary>
         /// Help message shown while localizing.
@@ -334,6 +344,7 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
         private IEnumerator _startLocationService = null;
         private IEnumerator _asyncCheck = null;
         private GeospatialPose _lastValidPose;
+        private bool _debugMode = false;
 
         /// <summary>
         /// Callback handling "Get Started" button click event in Privacy Prompt.
@@ -398,6 +409,10 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
                     CreateBubbles(System.IO.File.ReadAllText(@"C:\work\posts.json"), Vector3.zero, Vector3.forward);
                 }
             }
+            if (GUILayout.Button("Pop One"))
+            {
+                GetComponentInChildren<BubbleContent>().Pop();
+            }
             GUILayout.EndHorizontal();
         }
 #endif
@@ -409,9 +424,19 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
 
         public IEnumerator LoadBubblesAsync()
         {
+            Array.ForEach(GetComponentsInChildren<BubbleContent>(), b => b.Pop(false));
+            var bubbles = GetComponentsInChildren<BubbleContent>();
+            foreach (var item in bubbles)
+            {
+                item.Pop(false);
+                yield return new WaitForSecondsRealtime(UnityEngine.Random.Range(0f, 0.2f));
+            }
+            var hashTag = HashtagInputField.text;
+            HashtagInputField.text = String.Empty;
             using (var client = new HttpClient())
             {
-                var uri = $"https://realityhack25-minbubble.azurewebsites.net/api/mindBubble/{HashtagInputField.text}/{_lastValidPose.Latitude.ToString("F6", System.Globalization.CultureInfo.InvariantCulture)}/{_lastValidPose.Longitude.ToString("F6", System.Globalization.CultureInfo.InvariantCulture)}?";
+
+                var uri = $"https://realityhack25-minbubble.azurewebsites.net/api/mindBubble/{hashTag}/{_lastValidPose.Latitude.ToString("F6", System.Globalization.CultureInfo.InvariantCulture)}/{_lastValidPose.Longitude.ToString("F6", System.Globalization.CultureInfo.InvariantCulture)}?";
                 Debug.Log($"Sending Request: {uri}");
                 var request = client.GetAsync($"{uri}code=6yo_NxBLKz-gg56I5UuEhBdecycemSTn4Wblo-YZUhmmAzFuAfsZrw%3D%3D");
                 yield return new WaitUntil(() => request.Status >= System.Threading.Tasks.TaskStatus.RanToCompletion);
@@ -428,10 +453,16 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
                 CreateBubbles(content, Camera.main.transform.position + Camera.main.transform.forward, Camera.main.transform.forward);
             }
         }
-        private void CreateBubbles(string content, Vector3 aroundWorldPos, Vector3 lookDir)
+        public void CreateBubbles(string jsonContentThemes, Vector3 aroundWorldPos, Vector3 lookDir)
         {
             // Deserialize the content into a ThemesContainer
-            var container = JsonConvert.DeserializeObject<ThemesContainer>(content);
+            var container = JsonConvert.DeserializeObject<ThemesContainer>(jsonContentThemes);
+            var topics = container.Themes;
+            CreateBubbles(topics, aroundWorldPos, lookDir);
+        }
+
+        public void CreateBubbles(Dictionary<string, List<string>> topics, Vector3 aroundWorldPos, Vector3 lookDir)
+        {
 
             // Normalize the look direction
             lookDir.Normalize();
@@ -446,10 +477,10 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
             up = Vector3.Cross(lookDir, right).normalized;
 
             float radius = .5f; // Radius of the floating plane
-            float angleStep = 360.0f / container.Themes.Count; // Angle between each bubble
+            float angleStep = 360.0f / topics.Count; // Angle between each bubble
             int idx = 0;
 
-            foreach (var item in container.Themes)
+            foreach (var item in topics)
             {
                 // Calculate the angle for this bubble
                 float angle = idx * angleStep * Mathf.Deg2Rad;
@@ -460,6 +491,7 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
 
                 // Instantiate the bubble
                 var bubble = GameObject.Instantiate(BubblePrefab, transform);
+                bubble.Posts = item.Value.ToArray();
                 bubble.GetComponentInChildren<Text3D>().Text = item.Key;
 
                 // Set the bubble's position and rotation
@@ -538,6 +570,7 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
         /// </summary>
         public void Awake()
         {
+            Instance = this;
             // Lock screen to portrait.
             Screen.autorotateToLandscapeLeft = false;
             Screen.autorotateToLandscapeRight = false;
@@ -598,7 +631,7 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
             _shouldResolvingHistory = _historyCollection.Collection.Count > 0;
 
             SwitchToARView(PlayerPrefs.HasKey(_hasDisplayedPrivacyPromptKey));
-
+            DisableDebug?.Invoke();
             if (StreetscapeGeometryManager == null)
             {
                 Debug.LogWarning("StreetscapeGeometryManager must be set in the " +
@@ -821,13 +854,14 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
                     _clearStreetscapeGeometryRenderObjects = false;
                 }
 
-                if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began
-                    && !EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId)
-                    && _anchorObjects.Count < _storageLimit)
-                {
-                    // Set anchor on screen tap.
-                    PlaceAnchorByScreenTap(Input.GetTouch(0).position);
-                }
+                //not doing this anymore ... code left from demo
+                //if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began
+                //    && !EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId)
+                //    && _anchorObjects.Count < _storageLimit)
+                //{
+                //    // Set anchor on screen tap.
+                //    PlaceAnchorByScreenTap(Input.GetTouch(0).position);
+                //}
 
                 // Hide anchor settings and toggles if the storage limit has been reached.
                 if (_anchorObjects.Count >= _storageLimit)
@@ -868,6 +902,37 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
             {
                 InfoText.text = "GEOSPATIAL POSE: not tracking";
             }
+
+            if (Input.touchCount > 0 && (Input.GetTouch(0).phase == TouchPhase.Stationary || Input.GetTouch(0).phase == TouchPhase.Moved) && Input.GetTouch(0).deltaTime > 2f)
+            {
+                ChangeDebugMode(!_debugMode);
+            }
+            else if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended) || (Input.GetMouseButtonUp(0)) || UnityEngine.InputSystem.Mouse.current.leftButton.isPressed)
+            {
+                var screenPos = Input.touchCount > 0 ?
+                    Input.GetTouch(0).position :
+                        Input.GetMouseButtonUp(0) ?
+                            new Vector2(Input.mousePosition.x, Input.mousePosition.y) :
+                            new Vector2(UnityEngine.InputSystem.Mouse.current.position.x.value, UnityEngine.InputSystem.Mouse.current.position.y.value);
+                var ray = Camera.main.ScreenPointToRay(screenPos);
+                if (Physics.Raycast(ray, out var hitInfo) && hitInfo.collider.GetComponentInParent<BubbleContent>())
+                {
+                    hitInfo.collider.GetComponentInParent<BubbleContent>().Pop();
+                }
+            }
+        }
+
+        private void ChangeDebugMode(bool enable)
+        {
+            if (enable)
+            {
+                ActivateDebug?.Invoke();
+            }
+            else
+            {
+                DisableDebug?.Invoke();
+            }
+            _debugMode = enable;
         }
 
         /// <summary>
