@@ -18,6 +18,8 @@ namespace RealityHack25.MindBubble.Function
 
         private readonly ILogger<Bubble> _logger;
 
+        const string GPT_FUNCTION_URL = "https://mind-bubble.openai.azure.com/openai/deployments/gpt-4o/chat/completions?api-version=2024-02-15-preview";
+
         public Bubble(ILogger<Bubble> logger)
         {
             _logger = logger;
@@ -48,30 +50,11 @@ namespace RealityHack25.MindBubble.Function
             double longitude)
         {
             _logger.LogInformation($"Got Request for: {keyword}/{latitude}/{longitude}");
-            var posts = new[]{"🚀Just kicked off my first #Hackathon! Building something cool with AI and IoT. Fingers crossed 🤞 #Innovation",
-"Working non-stop for 12 hours now. Coffee is my best friend. ☕ #Hackathon #TeamNoSleep",
-"The excitement of turning ideas into reality in just 48 hours! 🛠️ #HackathonLife",
-"Our team is exploring blockchain for secure data sharing. Let's see where this goes! #Hackathon #Crypto",
-"Day 2: Bugs, stress, and lots of laughs with the team. This is why I love #Hackathons! ❤️",
-"Looking forward to pitching our idea tomorrow! Time to rehearse. 🎤 #Hackathon",
-"Learning so much from mentors and peers at this event. The community is amazing! #Hackathon #Networking",
-"Finally figured out the API integration. Victory never tasted so sweet! 🎉 #HackathonLife",
-"Our project is called 'GreenTechAI'—aiming to make sustainable living accessible with AI. 🌍 #Hackathon",
-"Sleep is overrated when you’re building the next big thing! 😎 #Hackathon #TeamWork",
-"Our prototype is live! Can't wait to showcase it to the judges tomorrow. #Hackathon #Innovation",
-"Highlight of the day: Free pizza and energy drinks. 🍕🥤 #HackathonSurvival",
-"We’ve hit a roadblock, but the team is staying positive. Time to brainstorm a workaround. 🧠 #Hackathon",
-"Joining forces with incredible people to solve real-world problems. Let’s do this! 💪 #Hackathon",
-"Our project idea: An app that detects emotions and suggests mood-based playlists. 🎵😊 #Hackathon",
-"3 AM coding sessions, debugging marathons, and a growing pile of snacks. #HackathonVibes",
-"Just attended an amazing workshop on machine learning. So inspired right now! #HackathonLearning",
-"The power of collaboration: 3 strangers, 1 vision, and a lot of code. 💻 #HackathonMagic",
-"Quick power nap and back to coding. No time to waste! 💤💻 #HackathonHustle",
-"Win or lose, this experience has been incredible. Thank you to everyone who made it possible! 🙌 #Hackathon"};
-
+            _logger.LogInformation("gathering posts");
+            var posts = await GatherPosts(keyword, latitude, longitude);
+            _logger.LogInformation("got posts");
 
             // Build the URL for Function B
-            string functionBUrl = "https://mind-bubble.openai.azure.com/openai/deployments/gpt-4o/chat/completions?api-version=2024-02-15-preview";
             using (var httpClient = new HttpClient())
             {
                 httpClient.DefaultRequestHeaders.Add("api-key", Environment.GetEnvironmentVariable("AZURE_OPENAI_KEY"));
@@ -110,7 +93,7 @@ namespace RealityHack25.MindBubble.Function
                     stream = false
                 };
 
-                var gptResponse = await httpClient.PostAsync(functionBUrl, new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(payload), Encoding.UTF8, "application/json"));
+                var gptResponse = await httpClient.PostAsync(GPT_FUNCTION_URL, new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(payload), Encoding.UTF8, "application/json"));
 
                 if (gptResponse.IsSuccessStatusCode)
                 {
@@ -124,7 +107,97 @@ namespace RealityHack25.MindBubble.Function
             }
         }
 
-        private string GeneratePrompt(string[] posts)
+        private async Task<string> GatherPosts(string keyword, double latitude, double longitude)
+        {//right now gather real posts is not feasable .. so fake them using chatGPT
+            try
+            {
+                using (var httpClient = new HttpClient())
+                {
+                    var locationInfo = latitude != 0 && longitude != 0 ? $" around the coordinates ({latitude}, {longitude})" : "";
+                    httpClient.DefaultRequestHeaders.Add("api-key", Environment.GetEnvironmentVariable("AZURE_OPENAI_KEY"));
+                    var payload = new
+                    {
+                        messages = new object[]
+                        {
+                  new {
+                      role = "system",
+                      content = new object[] {
+                          new {
+                              type = "text",
+                              text = "You are an AI assistant that generates realistic social media posts based on given hashtags and optional geographical coordinates."
+                          }
+                      }
+                  },
+                  new {
+                      role = "user",
+                      content = new object[] {
+                        //   new {
+                        //       type = "image_url",
+                        //       image_url = new {
+                        //           url = $"data:image/jpeg;base64,{encodedImage}"
+                        //       }
+                        //   },
+                          new {
+                              type = "text",
+                              text = $"Generate 20 realistic social media posts based on the hashtag #{keyword}{locationInfo}. Make them varied, engaging, and suitable for a range of contexts. Ensure the response is in JSON format with the following structure:\n" +
+                   "\n" +
+                   "```json\n" +
+                   "{\n" +
+                   "  \"posts\": [\n" +
+                   "    { \"content\": \"Post 1 content here\" },\n" +
+                   "    { \"content\": \"Post 2 content here\" },\n" +
+                   "    ...\n" +
+                   "  ]\n" +
+                   "}\n" +
+                   "```"
+                          }
+                      }
+                  }
+                        },
+                        temperature = 0.7,
+                        top_p = 0.95,
+                        max_tokens = 800,
+                        stream = false
+                    };
+
+                    var gptResponse = await httpClient.PostAsync(GPT_FUNCTION_URL, new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(payload), Encoding.UTF8, "application/json"));
+
+                    if (gptResponse.IsSuccessStatusCode)
+                    {
+                        var responseData = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(await gptResponse.Content.ReadAsStringAsync());
+                        return ""+ responseData;
+                    }
+                    _logger.LogError($"Error: {gptResponse.StatusCode}, {gptResponse.ReasonPhrase}");
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while creating posts");
+            }
+            //dummy backup
+            return "{\n"+
+"  \"posts\": [\n"+
+"    { \"content\": \"The future of reality is being shaped right here. #VR\" },\n"+
+"    { \"content\": \"Testing out some jaw-dropping tech innovations. #VR\" },\n"+
+"    { \"content\": \"Our team's project is finally coming together. #Innovation\" },\n"+
+"    { \"content\": \"Every moment here is a lesson in innovation. #VR\" },\n"+
+"    { \"content\": \"Building something that could change the world. #Boston\" },\n"+
+"    { \"content\": \"Can't wait to share our prototype with the judges! #AR\" },\n"+
+"    { \"content\": \"Loving the collaborative spirit at the hackathon. #realityHack\" },\n"+
+"    { \"content\": \"Breakthrough idea in the making! Stay tuned. 🚀 #Hackathon\" },\n"+
+"    { \"content\": \"The view through AR lenses is simply mind-blowing. #Innovation\" },\n"+
+"    { \"content\": \"Our team's project is finally coming together. #Innovation\" },\n"+
+"    { \"content\": \"Pushing the limits of tech, one line of code at a time. #Hackathon\" },\n"+
+"    { \"content\": \"Can't wait to share our prototype with the judges! #Innovation\" },\n"+
+"    { \"content\": \"Just wrapped up a great session on spatial mapping! #AR\" },\n"+
+"    { \"content\": \"Pushing the limits of tech, one line of code at a time. #Boston\" },\n"+
+"    { \"content\": \"Pushing the limits of tech, one line of code at a time. #Hackathon\" },\n"+
+"    { \"content\": \"Unity + AR = Endless possibilities. #DevLife #Innovation\" }\n"+
+"  ]\n"+
+"}\n";
+        }
+
+        private string GeneratePrompt(string posts)
         {
             return $"Please summarize and group the following posts into meaningful themes based on their content. Provide the response only in a JSON format with the following structure:\r\n" +
 "\r\n" +
@@ -143,7 +216,9 @@ namespace RealityHack25.MindBubble.Function
 "}\r\n" +
 "```\r\n" +
 "\r\n" +
-$"{String.Join(";\r\n", posts)}" +
+"```\r\n" +
+$"{posts}\r\n" +
+"```\r\n" +
 "Group similar posts under the same theme name, and name the themes appropriately to reflect the content. Ensure the JSON format is strictly followed with no additional text or explanations.";
 
 
