@@ -1,4 +1,4 @@
-// <copyright file="GeospatialController.cs" company="Google LLC">
+﻿// <copyright file="GeospatialController.cs" company="Google LLC">
 //
 // Copyright 2022 Google LLC
 //
@@ -50,6 +50,9 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
 #if UNITY_ANDROID
 
     using UnityEngine.Android;
+    using System.Net.Http;
+    using TMPro;
+    using Newtonsoft.Json;
 #endif
 
     /// <summary>
@@ -106,7 +109,13 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
         /// </summary>
         public Material StreetscapeGeometryMaterialTerrain;
 
+        [Header("Prefabs")]
+
+        public GameObject BubblePrefab;
+
         [Header("UI Elements")]
+
+        public TMP_InputField HashtagInputField;
 
         /// <summary>
         /// A 3D object that presents a Geospatial Anchor.
@@ -324,6 +333,7 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
         private List<GameObject> _anchorObjects = new List<GameObject>();
         private IEnumerator _startLocationService = null;
         private IEnumerator _asyncCheck = null;
+        private GeospatialPose _lastValidPose;
 
         /// <summary>
         /// Callback handling "Get Started" button click event in Privacy Prompt.
@@ -368,6 +378,98 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
         {
             VPSCheckCanvas.SetActive(false);
         }
+
+#if UNITY_EDITOR
+        private void OnGUI()
+        {
+            GUILayout.BeginHorizontal();
+            if (GUILayout.Button("Load Posts"))
+            {
+                LoadBubbles();
+            }
+            if (GUILayout.Button("Create Bubbles"))
+            {
+                if (Camera.main != null)
+                {
+                    CreateBubbles(System.IO.File.ReadAllText(@"C:\work\posts.json"), Camera.main.transform.position + Camera.main.transform.forward, Camera.main.transform.forward);
+                }
+                else
+                {
+                    CreateBubbles(System.IO.File.ReadAllText(@"C:\work\posts.json"), Vector3.zero, Vector3.forward);
+                }
+            }
+            GUILayout.EndHorizontal();
+        }
+#endif
+
+        public void LoadBubbles()
+        {
+            StartCoroutine(LoadBubblesAsync());
+        }
+
+        public IEnumerator LoadBubblesAsync()
+        {
+            using (var client = new HttpClient())
+            {
+                var uri = $"https://realityhack25-minbubble.azurewebsites.net/api/mindBubble/{HashtagInputField.text}/{_lastValidPose.Latitude.ToString("F6", System.Globalization.CultureInfo.InvariantCulture)}/{_lastValidPose.Longitude.ToString("F6", System.Globalization.CultureInfo.InvariantCulture)}?";
+                Debug.Log($"Sending Request: {uri}");
+                var request = client.GetAsync($"{uri}code=6yo_NxBLKz-gg56I5UuEhBdecycemSTn4Wblo-YZUhmmAzFuAfsZrw%3D%3D");
+                yield return new WaitUntil(() => request.Status >= System.Threading.Tasks.TaskStatus.RanToCompletion);
+                if (request.Status != System.Threading.Tasks.TaskStatus.RanToCompletion)
+                {
+                    Debug.LogError($"Was not able to complete Request Status:{request.Status}");
+                    yield break;
+                }
+                Debug.Log($"Received Status: {request.Status}");
+                var gptResult = request.Result.Content.ReadAsStringAsync();
+                yield return new WaitUntil(() => gptResult.Status >= System.Threading.Tasks.TaskStatus.RanToCompletion);
+                var content = gptResult.Result;
+                Debug.Log($"Received Answer: {content}");
+                CreateBubbles(content, Camera.main.transform.position + Camera.main.transform.forward, Camera.main.transform.forward);
+            }
+        }
+        private void CreateBubbles(string content, Vector3 aroundWorldPos, Vector3 lookDir)
+        {
+            // Deserialize the content into a ThemesContainer
+            var container = JsonConvert.DeserializeObject<ThemesContainer>(content);
+
+            // Normalize the look direction
+            lookDir.Normalize();
+
+            // Get a vector perpendicular to the look direction (arbitrary plane)
+            Vector3 up = Vector3.up;
+            if (Vector3.Dot(lookDir, up) > 0.99f) // Handle edge case: lookDir is nearly parallel to up
+            {
+                up = Vector3.right;
+            }
+            Vector3 right = Vector3.Cross(up, lookDir).normalized;
+            up = Vector3.Cross(lookDir, right).normalized;
+
+            float radius = .5f; // Radius of the floating plane
+            float angleStep = 360.0f / container.Themes.Count; // Angle between each bubble
+            int idx = 0;
+
+            foreach (var item in container.Themes)
+            {
+                // Calculate the angle for this bubble
+                float angle = idx * angleStep * Mathf.Deg2Rad;
+
+                // Position the bubble on the plane
+                Vector3 offset = (Mathf.Cos(angle) * right + Mathf.Sin(angle) * up) * radius;
+                Vector3 bubblePosition = aroundWorldPos + offset;
+
+                // Instantiate the bubble
+                var bubble = GameObject.Instantiate(BubblePrefab, transform);
+                bubble.GetComponentInChildren<Text3D>().Text = item.Key;
+
+                // Set the bubble's position and rotation
+                bubble.transform.position = bubblePosition;
+                bubble.transform.rotation = Quaternion.LookRotation(lookDir, up);
+
+                idx++;
+            }
+        }
+
 
         /// <summary>
         /// Callback handling "Geometry" toggle event in AR View.
@@ -745,6 +847,7 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
             InfoPanel.SetActive(true);
             if (earthTrackingState == TrackingState.Tracking)
             {
+                _lastValidPose = pose;
                 InfoText.text = string.Format(
                 "Latitude/Longitude: {1}°, {2}°{0}" +
                 "Horizontal Accuracy: {3}m{0}" +
@@ -1469,7 +1572,7 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
         /// Generates the placed anchor failure string for the UI display.
         /// </summary>
         /// <returns> The string for the UI display for a failed anchor placement.</returns>
-         private string GetDisplayStringForAnchorPlacedFailure()
+        private string GetDisplayStringForAnchorPlacedFailure()
         {
             return string.Format(
                     "Failed to set a {0} anchor!", _anchorType);

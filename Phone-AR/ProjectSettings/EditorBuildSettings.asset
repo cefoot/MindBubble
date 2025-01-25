@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Samples/ARCore Extensions/1.47.0/Geospatial Sample/Scenes/GeospatialArf6.unity
-    guid: 756ddf877a3104469b58f6a31b0cb446
+    path: Assets/Scenes/MindBubbles.unity
+    guid: 7dc3b013aca21ca478987be3d2eec797
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 6ee72d15cf39dd748a13eac57397b9af,
       type: 2}
