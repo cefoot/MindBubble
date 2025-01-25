@@ -42,8 +42,12 @@ namespace RealityHack25.MindBubble.Function
         }
 
         [Function("Bubble")]
-        public async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequest req)
+        public async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = "mindBubble/{keyword}/{latitude}/{longitude}")] HttpRequest req,
+            string keyword,
+            double latitude,
+            double longitude)
         {
+            _logger.LogInformation($"Got Request for: {keyword}/{latitude}/{longitude}");
             var posts = new[]{"🚀Just kicked off my first #Hackathon! Building something cool with AI and IoT. Fingers crossed 🤞 #Innovation",
 "Working non-stop for 12 hours now. Coffee is my best friend. ☕ #Hackathon #TeamNoSleep",
 "The excitement of turning ideas into reality in just 48 hours! 🛠️ #HackathonLife",
