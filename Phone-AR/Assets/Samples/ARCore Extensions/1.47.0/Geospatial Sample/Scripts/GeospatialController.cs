@@ -205,6 +205,8 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
 
         public UnityEvent ActivateDebug;
         public UnityEvent DisableDebug;
+        public UnityEvent StartedLoadingBubbles;
+        public UnityEvent FinishedLoadingBubbles;
 
 
         /// <summary>
@@ -424,35 +426,45 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
 
         public IEnumerator LoadBubblesAsync()
         {
-            Array.ForEach(GetComponentsInChildren<BubbleContent>(), b => b.Pop(false));
-            var bubbles = GetComponentsInChildren<BubbleContent>();
-            foreach (var item in bubbles)
-            {
-                item.Pop(false);
-                yield return new WaitForSecondsRealtime(UnityEngine.Random.Range(0f, 0.2f));
-            }
-            var hashTag = HashtagInputField.text;
-            HashtagInputField.text = String.Empty;
-            using (var client = new HttpClient())
+            StartedLoadingBubbles?.Invoke();
+            try
             {
 
-                var uri = $"https://realityhack25-minbubble.azurewebsites.net/api/mindBubble/{hashTag}/{_lastValidPose.Latitude.ToString("F6", System.Globalization.CultureInfo.InvariantCulture)}/{_lastValidPose.Longitude.ToString("F6", System.Globalization.CultureInfo.InvariantCulture)}?";
-                Debug.Log($"Sending Request: {uri}");
-                var request = client.GetAsync($"{uri}code=6yo_NxBLKz-gg56I5UuEhBdecycemSTn4Wblo-YZUhmmAzFuAfsZrw%3D%3D");
-                yield return new WaitUntil(() => request.Status >= System.Threading.Tasks.TaskStatus.RanToCompletion);
-                if (request.Status != System.Threading.Tasks.TaskStatus.RanToCompletion)
+                Array.ForEach(GetComponentsInChildren<BubbleContent>(), b => b.Pop(false));
+                var bubbles = GetComponentsInChildren<BubbleContent>();
+                foreach (var item in bubbles)
                 {
-                    Debug.LogError($"Was not able to complete Request Status:{request.Status}");
-                    yield break;
+                    item.Pop(false);
+                    yield return new WaitForSecondsRealtime(UnityEngine.Random.Range(0f, 0.2f));
                 }
-                Debug.Log($"Received Status: {request.Status}");
-                var gptResult = request.Result.Content.ReadAsStringAsync();
-                yield return new WaitUntil(() => gptResult.Status >= System.Threading.Tasks.TaskStatus.RanToCompletion);
-                var content = gptResult.Result;
-                Debug.Log($"Received Answer: {content}");
-                CreateBubbles(content, Camera.main.transform.position + Camera.main.transform.forward, Camera.main.transform.forward);
+                var hashTag = HashtagInputField.text;
+                HashtagInputField.text = String.Empty;
+                using (var client = new HttpClient())
+                {
+
+                    var uri = $"https://realityhack25-minbubble.azurewebsites.net/api/mindBubble/{hashTag}/{_lastValidPose.Latitude.ToString("F6", System.Globalization.CultureInfo.InvariantCulture)}/{_lastValidPose.Longitude.ToString("F6", System.Globalization.CultureInfo.InvariantCulture)}?";
+                    Debug.Log($"Sending Request: {uri}");
+                    var request = client.GetAsync($"{uri}code=6yo_NxBLKz-gg56I5UuEhBdecycemSTn4Wblo-YZUhmmAzFuAfsZrw%3D%3D");
+                    yield return new WaitUntil(() => request.Status >= System.Threading.Tasks.TaskStatus.RanToCompletion);
+                    if (request.Status != System.Threading.Tasks.TaskStatus.RanToCompletion)
+                    {
+                        Debug.LogError($"Was not able to complete Request Status:{request.Status}");
+                        yield break;
+                    }
+                    Debug.Log($"Received Status: {request.Status}");
+                    var gptResult = request.Result.Content.ReadAsStringAsync();
+                    yield return new WaitUntil(() => gptResult.Status >= System.Threading.Tasks.TaskStatus.RanToCompletion);
+                    var content = gptResult.Result;
+                    Debug.Log($"Received Answer: {content}");
+                    CreateBubbles(content, Camera.main.transform.position + Camera.main.transform.forward, Camera.main.transform.forward);
+                }
+            }
+            finally
+            {
+                FinishedLoadingBubbles?.Invoke();
             }
         }
+
         public void CreateBubbles(string jsonContentThemes, Vector3 aroundWorldPos, Vector3 lookDir)
         {
             // Deserialize the content into a ThemesContainer
@@ -878,7 +890,7 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
                 }
             }
 
-            InfoPanel.SetActive(true);
+            //InfoPanel.SetActive(true);
             if (earthTrackingState == TrackingState.Tracking)
             {
                 _lastValidPose = pose;
