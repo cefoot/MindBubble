@@ -6787,7 +6787,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!54 &481878186
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17606,6 +17606,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bubble
       objectReference: {fileID: 0}
+    - target: {fileID: 737806723134196351, guid: ce34d1f442ff1434187ab9c09e04c8c0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4808988660717836205, guid: ce34d1f442ff1434187ab9c09e04c8c0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -26894,7 +26898,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1742190629
 MonoBehaviour:
   m_ObjectHideFlags: 0
