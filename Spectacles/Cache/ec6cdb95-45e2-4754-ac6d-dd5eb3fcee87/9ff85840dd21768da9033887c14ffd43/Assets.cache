@@ -1,0 +1,13 @@
+- !<AssetCache/9ff85840-dd21-768d-a903-3887c14ffd43>
+  AssetFiles:
+    5960718d-7061-4a04-947d-ff7f25a2b3d4: ec6cdb95-45e2-4754-ac6d-dd5eb3fcee87/9ff85840dd21768da9033887c14ffd43/Data/RealityHackScreenshot_1.png
+  Assets:
+    - !<FileTexture/5960718d-7061-4a04-947d-ff7f25a2b3d4>
+      PackagePath: ""
+      FileInfo: !<FileTextureInfo>
+        Width: 1562
+        Height: 1166
+  SourceHash: 9ff85840dd21768da9033887c14ffd43
+  FileHash: 8fa022c8ab4669fb817b4406e2bf0112
+  NativePackageItems:
+    []

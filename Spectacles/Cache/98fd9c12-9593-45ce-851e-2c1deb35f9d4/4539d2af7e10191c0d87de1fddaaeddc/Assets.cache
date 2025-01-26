@@ -1,0 +1,13 @@
+- !<AssetCache/4539d2af-7e10-191c-0d87-de1fddaaeddc>
+  AssetFiles:
+    4eb0a50b-2669-4653-90ff-ca8b54f2bc80: 98fd9c12-9593-45ce-851e-2c1deb35f9d4/4539d2af7e10191c0d87de1fddaaeddc/Data/MITRealityHack-4C-Logo-2-01.png
+  Assets:
+    - !<FileTexture/4eb0a50b-2669-4653-90ff-ca8b54f2bc80>
+      PackagePath: ""
+      FileInfo: !<FileTextureInfo>
+        Width: 2048
+        Height: 2048
+  SourceHash: 4539d2af7e10191c0d87de1fddaaeddc
+  FileHash: c77ef71bebb1d30537f863f95e29fb79
+  NativePackageItems:
+    []

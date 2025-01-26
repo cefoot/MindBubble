@@ -1,0 +1,13 @@
+- !<AssetCache/3754dcaa-1c54-9fba-c63f-4d1cbaec8e32>
+  AssetFiles:
+    03e20552-b352-4549-9a47-a33cde1259c4: 30ba2295-0996-4c20-aac2-4c236df6438f/3754dcaa1c549fbac63f4d1cbaec8e32/Data/Instagram_Logo.png
+  Assets:
+    - !<FileTexture/03e20552-b352-4549-9a47-a33cde1259c4>
+      PackagePath: ""
+      FileInfo: !<FileTextureInfo>
+        Width: 2048
+        Height: 2048
+  SourceHash: 3754dcaa1c549fbac63f4d1cbaec8e32
+  FileHash: 7355c46470b0d3d7b8cfbd5253009e70
+  NativePackageItems:
+    []

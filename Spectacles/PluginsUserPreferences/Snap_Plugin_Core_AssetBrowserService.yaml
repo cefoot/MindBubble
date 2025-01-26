@@ -1,0 +1,10 @@
+ExternalSources:
+  type: "std::map<class Es::Uuid,class Es::Path,struct std::less<class Es::Uuid>,class std::allocator<struct std::pair<class Es::Uuid const ,class Es::Path> > >"
+  value:
+    - 30ba2295-0996-4c20-aac2-4c236df6438f: "C:/Users/mered/Downloads/Instagram_Logo.png"
+    - 86031c52-2532-41a5-bdf3-5bf32fb52377: "C:/Users/mered/OneDrive - Northeastern University/Pictures/Camera Roll/bunbun.png"
+    - bc7519a6-9a98-4ef6-bc66-c3e6a2f7df8f: "C:/Users/mered/Downloads/glass.fbx"
+    - d9822a47-a55c-4701-899a-1f024e0814f2: "C:/Users/mered/Downloads/bubble.fbx"
+    - ec6cdb95-45e2-4754-ac6d-dd5eb3fcee87: "C:/Users/mered/Downloads/RealityHackScreenshot_1.png"
+    - f20bf93c-98da-4e9b-877a-e094de16a544: "C:/Users/mered/Downloads/book.fbx"
+  options: 4

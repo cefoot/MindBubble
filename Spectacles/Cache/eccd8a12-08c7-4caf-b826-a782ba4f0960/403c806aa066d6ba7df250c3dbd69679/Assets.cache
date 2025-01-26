@@ -1,0 +1,13 @@
+- !<AssetCache/403c806a-a066-d6ba-7df2-50c3dbd69679>
+  AssetFiles:
+    454eb529-9d48-43d7-9ba9-dcbfbb680940: eccd8a12-08c7-4caf-b826-a782ba4f0960/403c806aa066d6ba7df250c3dbd69679/Data/GPUParticlesTexture.png
+  Assets:
+    - !<FileTexture/454eb529-9d48-43d7-9ba9-dcbfbb680940>
+      PackagePath: ""
+      FileInfo: !<FileTextureInfo>
+        Width: 128
+        Height: 128
+  SourceHash: 403c806aa066d6ba7df250c3dbd69679
+  FileHash: e4dc9484a846ab29d63ec805bb49adfc
+  NativePackageItems:
+    []

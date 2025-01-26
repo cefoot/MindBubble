@@ -1,0 +1,2175 @@
+- !<AssetCache/2a24de2c-83e2-aa93-0ac6-2a0ba0dfdab1>
+  AssetFiles:
+    368cf105-8a98-442d-aee2-11cedb15ed3c: f20bf93c-98da-4e9b-877a-e094de16a544/2a24de2c83e2aa930ac62a0ba0dfdab1/Data/Meshes/cover.005.mesh
+    fedfb487-2246-46cc-94ef-752bf6b5ad4c: f20bf93c-98da-4e9b-877a-e094de16a544/2a24de2c83e2aa930ac62a0ba0dfdab1/Data/.hidden/Material.001.ss_graph
+    c4e164e9-9255-4599-9359-d87057aab975: f20bf93c-98da-4e9b-877a-e094de16a544/2a24de2c83e2aa930ac62a0ba0dfdab1/Data/.hidden/white.jpg
+    8c515621-2c4d-4a6e-944a-ed417ce9f288: f20bf93c-98da-4e9b-877a-e094de16a544/2a24de2c83e2aa930ac62a0ba0dfdab1/Data/Meshes/latch.004.mesh
+    7d0efd8f-08e2-4c60-b360-56814035e283: f20bf93c-98da-4e9b-877a-e094de16a544/2a24de2c83e2aa930ac62a0ba0dfdab1/Data/Meshes/paper.004.mesh
+    2b32619c-e4de-4cc5-9480-fcb2b9b9954c: f20bf93c-98da-4e9b-877a-e094de16a544/2a24de2c83e2aa930ac62a0ba0dfdab1/Data/Meshes/strap.004.mesh
+  Assets:
+    - !<ObjectPrefab/96c12e1c-9a7f-415b-8808-edf057402cd2>
+      PackagePath: ""
+      objects:
+        - !<own> 28facaa3-e4dc-4a56-badc-5e1a672045f1
+      LazyLoading: false
+      RetainAssets: true
+    - !<FileMesh/368cf105-8a98-442d-aee2-11cedb15ed3c>
+      PackagePath: Meshes/cover.005
+      Info: !<MeshInfo>
+        Triangles: 4096
+        Vertices: 2756
+        Blendshapes:
+          []
+        Joints: 0
+        AabbSize: {x: 2.000000, y: 1.314157, z: 0.240000}
+    - !<Material/0ef9d783-9d58-4330-9b19-92e50847cfe3>
+      PackagePath: Materials/Material.005
+      PassesInfo:
+        - !<own> e8a9bd33-db9a-4dda-922e-86550895c8f3
+    - !<ShaderGraphPass/fedfb487-2246-46cc-94ef-752bf6b5ad4c>
+      PackagePath: .hidden/Material.001
+      DefaultDefines:
+        - NODE_13_DROPLIST_ITEM 0
+        - NODE_181_DROPLIST_ITEM 0
+        - NODE_184_DROPLIST_ITEM 0
+        - NODE_221_DROPLIST_ITEM 0
+        - NODE_228_DROPLIST_ITEM 0
+        - NODE_27_DROPLIST_ITEM 0
+        - NODE_315_DROPLIST_ITEM 0
+        - NODE_38_DROPLIST_ITEM 0
+        - NODE_49_DROPLIST_ITEM 0
+        - NODE_69_DROPLIST_ITEM 0
+        - NODE_76_DROPLIST_ITEM 0
+      DefaultProperties:
+        Port_Depth_N004:
+          typeIdx: 1
+          value: 1.000000
+        Port_FinalColor1_N004:
+          typeIdx: 5
+          value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+        Port_FinalColor2_N004:
+          typeIdx: 5
+          value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+        Port_FinalColor3_N004:
+          typeIdx: 5
+          value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+        Port_GSplatPointSize_N004:
+          typeIdx: 1
+          value: 0.000000
+        Port_RayDirection_N004:
+          typeIdx: 4
+          value: {x: 0.000000, y: 1.000000, z: 0.000000}
+        Port_RayOrigin_N004:
+          typeIdx: 4
+          value: {x: 0.000000, y: 0.000000, z: 0.000000}
+        Port_WorldNormal_N004:
+          typeIdx: 4
+          value: {x: 0.000000, y: 1.000000, z: 0.000000}
+        Port_WorldPosition_N004:
+          typeIdx: 4
+          value: {x: 0.000000, y: 0.000000, z: 0.000000}
+        Port_WorldTangent_N004:
+          typeIdx: 4
+          value: {x: 0.000000, y: 0.000000, z: 1.000000}
+      PassUiData: !<PassUiData>
+        ExtraDefines:
+          - SC_ENABLE_RT_CASTER
+          - SC_ENABLE_RT_RECEIVER
+        PassBindings:
+          - mLabel: Graph Parameters
+            mType: Invalid
+            mName: ""
+            mWidget: group_start
+            mHint: ""
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: Vertex Color
+            mType: DefineSelect
+            mName: ""
+            mWidget: ""
+            mHint: Specifies the purpose for which vertex color will be used. Requires vertex color to be supplied by the mesh.
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              - mLabel: None
+                mType: DefineSelectValue
+                mName: NODE_38_DROPLIST_ITEM 0
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+              - mLabel: Base Color
+                mType: DefineSelectValue
+                mName: NODE_38_DROPLIST_ITEM 1
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+              - mLabel: Emissive
+                mType: DefineSelectValue
+                mName: NODE_38_DROPLIST_ITEM 2
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+              - mLabel: AO
+                mType: DefineSelectValue
+                mName: NODE_38_DROPLIST_ITEM 3
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+          - mLabel: Base Color
+            mType: Property
+            mName: baseColor
+            mWidget: color
+            mHint: |-
+              Property: baseColor
+              
+              Specifies the base color (albedo) of the material if the 'Base Textre' is disabled. 
+              Multiplied with the 'Base Texture' otherwise.
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: 1.000000
+            mValues:
+              []
+          - mLabel: Base Texture
+            mType: Define
+            mName: ENABLE_BASE_TEX
+            mWidget: group_start
+            mHint: |-
+              Define: ENABLE_BASE_TEX
+              
+              Most materials use a base texture (albedo), but disabling it means the base texture will be considered white, and 'Base Color' will solely control the color.
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: Texture
+            mType: Property
+            mName: baseTex
+            mWidget: texture_group
+            mHint: "Property: baseTex"
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: Texture UV
+            mType: DefineSelect
+            mName: ""
+            mWidget: ""
+            mHint: Specifies the UV set used as the base on top of which the transform is applied.
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              - mLabel: Mesh UV 0
+                mType: DefineSelectValue
+                mName: NODE_27_DROPLIST_ITEM 0
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+              - mLabel: Mesh UV 1
+                mType: DefineSelectValue
+                mName: NODE_27_DROPLIST_ITEM 1
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+              - mLabel: Transformed UV 2
+                mType: DefineSelectValue
+                mName: NODE_27_DROPLIST_ITEM 2
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+              - mLabel: Transformed UV 3
+                mType: DefineSelectValue
+                mName: NODE_27_DROPLIST_ITEM 3
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+          - mLabel: ""
+            mType: GroupEnd
+            mName: ENABLE_BASE_TEX
+            mWidget: group_end
+            mHint: ""
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: Opacity Texture
+            mType: Define
+            mName: ENABLE_OPACITY_TEX
+            mWidget: group_start
+            mHint: |-
+              Define: ENABLE_OPACITY_TEX
+              
+              Normally, the Base Texture's alpha is taken as opacity. Enabling this allows you to define a separate greyscale opacity texture. 
+              The 'Opacity Texture' value will be multiplied with the Base Texture's alpha (which is 1 for textures without alpha) to get the final opacity. 
+              'Opacity Texture' is only available if 'Blend Mode' is not 'Disabled'.
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: Texture
+            mType: Property
+            mName: opacityTex
+            mWidget: texture_group
+            mHint: "Property: opacityTex"
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: Texture UV
+            mType: DefineSelect
+            mName: ""
+            mWidget: ""
+            mHint: Specifies the UV set used as the base on top of which the transform is applied.
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              - mLabel: Mesh UV 0
+                mType: DefineSelectValue
+                mName: NODE_69_DROPLIST_ITEM 0
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+              - mLabel: Mesh UV 1
+                mType: DefineSelectValue
+                mName: NODE_69_DROPLIST_ITEM 1
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+              - mLabel: Transformed UV 2
+                mType: DefineSelectValue
+                mName: NODE_69_DROPLIST_ITEM 2
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+              - mLabel: Transformed UV 3
+                mType: DefineSelectValue
+                mName: NODE_69_DROPLIST_ITEM 3
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+          - mLabel: ""
+            mType: GroupEnd
+            mName: ENABLE_OPACITY_TEX
+            mWidget: group_end
+            mHint: ""
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: Recolor
+            mType: Define
+            mName: ENABLE_RECOLOR
+            mWidget: group_start
+            mHint: |-
+              Define: ENABLE_RECOLOR
+              
+              Recolor replaces colors in the base texture. 
+              This is useful for adding variety to assets, ex: recolor a red shirt with a green logo to a blue shirt with a black logo, or any other color combination. 
+              Where the base texture is red, you will get whatever color you set in Recolor Red, and same thing for the green and blue channels of the base texture. 
+              This also works in combination if the base color is not a pure red, green or blue color.
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: Recolor Red
+            mType: Property
+            mName: recolorRed
+            mWidget: color
+            mHint: "Property: recolorRed"
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: 1.000000
+            mValues:
+              []
+          - mLabel: Recolor Green
+            mType: Property
+            mName: recolorGreen
+            mWidget: color
+            mHint: "Property: recolorGreen"
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: 1.000000
+            mValues:
+              []
+          - mLabel: Recolor Blue
+            mType: Property
+            mName: recolorBlue
+            mWidget: color
+            mHint: "Property: recolorBlue"
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: 1.000000
+            mValues:
+              []
+          - mLabel: ""
+            mType: GroupEnd
+            mName: ENABLE_RECOLOR
+            mWidget: group_end
+            mHint: ""
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: Normal Map
+            mType: Define
+            mName: ENABLE_NORMALMAP
+            mWidget: group_start
+            mHint: |-
+              Define: ENABLE_NORMALMAP
+              
+              Enables the normal map texture and normal mapping. 
+              When this is disabled, the per pixel normal is solely determined by the interpolated vertex normals.
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: Texture
+            mType: Property
+            mName: normalTex
+            mWidget: texture_group
+            mHint: "Property: normalTex"
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: Texture UV
+            mType: DefineSelect
+            mName: ""
+            mWidget: ""
+            mHint: Specifies the UV set used for sampling this texture.
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              - mLabel: Mesh UV 0
+                mType: DefineSelectValue
+                mName: NODE_181_DROPLIST_ITEM 0
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+              - mLabel: Mesh UV 1
+                mType: DefineSelectValue
+                mName: NODE_181_DROPLIST_ITEM 1
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+              - mLabel: Transformed UV 2
+                mType: DefineSelectValue
+                mName: NODE_181_DROPLIST_ITEM 2
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+              - mLabel: Transformed UV 3
+                mType: DefineSelectValue
+                mName: NODE_181_DROPLIST_ITEM 3
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+          - mLabel: Detail Normal
+            mType: Define
+            mName: ENABLE_DETAIL_NORMAL
+            mWidget: group_start
+            mHint: |-
+              Define: ENABLE_DETAIL_NORMAL
+              
+              Detail normal mapping perturbs the base normal map by a detail normal map.
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: Texture
+            mType: Property
+            mName: detailNormalTex
+            mWidget: texture_group
+            mHint: "Property: detailNormalTex"
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: Texture UV
+            mType: DefineSelect
+            mName: ""
+            mWidget: ""
+            mHint: Specifies the UV set used for sampling this texture.
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              - mLabel: Mesh UV 0
+                mType: DefineSelectValue
+                mName: NODE_184_DROPLIST_ITEM 0
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+              - mLabel: Mesh UV 1
+                mType: DefineSelectValue
+                mName: NODE_184_DROPLIST_ITEM 1
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+              - mLabel: Transformed UV 2
+                mType: DefineSelectValue
+                mName: NODE_184_DROPLIST_ITEM 2
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+              - mLabel: Transformed UV 3
+                mType: DefineSelectValue
+                mName: NODE_184_DROPLIST_ITEM 3
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+          - mLabel: ""
+            mType: GroupEnd
+            mName: ENABLE_DETAIL_NORMAL
+            mWidget: group_end
+            mHint: ""
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: ""
+            mType: GroupEnd
+            mName: ENABLE_NORMALMAP
+            mWidget: group_end
+            mHint: ""
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: Emissive
+            mType: Define
+            mName: ENABLE_EMISSIVE
+            mWidget: group_start
+            mHint: |-
+              Define: ENABLE_EMISSIVE
+              
+              Enables the emissive texture.
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: Texture
+            mType: Property
+            mName: emissiveTex
+            mWidget: texture_group
+            mHint: "Property: emissiveTex"
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: Texture UV
+            mType: DefineSelect
+            mName: ""
+            mWidget: ""
+            mHint: Specifies the UV set used for sampling this texture.
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              - mLabel: Mesh UV 0
+                mType: DefineSelectValue
+                mName: NODE_76_DROPLIST_ITEM 0
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+              - mLabel: Mesh UV 1
+                mType: DefineSelectValue
+                mName: NODE_76_DROPLIST_ITEM 1
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+              - mLabel: Transformed UV 2
+                mType: DefineSelectValue
+                mName: NODE_76_DROPLIST_ITEM 2
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+              - mLabel: Transformed UV 3
+                mType: DefineSelectValue
+                mName: NODE_76_DROPLIST_ITEM 3
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+          - mLabel: Color
+            mType: Property
+            mName: emissiveColor
+            mWidget: color
+            mHint: |-
+              Property: emissiveColor
+              
+              Multiplies the existing emissive color. 
+              Requires 'Enable Emissive' and/or 'Vertex Color' should be set to 'Emissive'.
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: 1.000000
+            mValues:
+              []
+          - mLabel: Intensity
+            mType: Property
+            mName: emissiveIntensity
+            mWidget: slider
+            mHint: |-
+              Property: emissiveIntensity
+              
+              Multiplies the existing emissive color. 
+              Requires 'Enable Emissive' and/or 'Vertex Color' should be set to 'Emissive'.
+            mMin: 0.000000
+            mMax: 10.000000
+            mStep: 0.010000
+            mDefaultVal: 1.000000
+            mValues:
+              []
+          - mLabel: ""
+            mType: GroupEnd
+            mName: ENABLE_EMISSIVE
+            mWidget: group_end
+            mHint: ""
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: Simple Reflection
+            mType: Define
+            mName: ENABLE_SIMPLE_REFLECTION
+            mWidget: group_start
+            mHint: |-
+              Define: ENABLE_SIMPLE_REFLECTION
+              
+              Replaces the default PBR environment mapping with a simple lookup from a regular texture (no hdr, no roughness, no fresnel, etc.). 
+              It can even be used with unlit materials. The reflection lookup technically assumes a spherical environment map, which is a circular 
+              shaped texture as obtained by photographing a mirror ball. However, as a shortcut, it is sometimes used with simple, flat photos, and 
+              manually bent mesh normals. Note: this spherical mapping is technically different from the 'angular' envmap format that looks similar.
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: Texture
+            mType: Property
+            mName: reflectionTex
+            mWidget: texture_group
+            mHint: "Property: reflectionTex"
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: Intensity
+            mType: Property
+            mName: reflectionIntensity
+            mWidget: slider
+            mHint: "Property: reflectionIntensity"
+            mMin: 0.000000
+            mMax: 10.000000
+            mStep: 0.010000
+            mDefaultVal: 1.000000
+            mValues:
+              []
+          - mLabel: Modulation Map
+            mType: Define
+            mName: Tweak_N177
+            mWidget: group_start
+            mHint: |-
+              Define: Tweak_N177
+              
+              This texture modulates the reflection color. It can be RGB or greyscale.
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: Texture
+            mType: Property
+            mName: reflectionModulationTex
+            mWidget: texture_group
+            mHint: "Property: reflectionModulationTex"
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: Texture UV
+            mType: DefineSelect
+            mName: ""
+            mWidget: ""
+            mHint: Specifies the UV set used for sampling this texture.
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              - mLabel: Mesh UV 0
+                mType: DefineSelectValue
+                mName: NODE_228_DROPLIST_ITEM 0
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+              - mLabel: Mesh UV 1
+                mType: DefineSelectValue
+                mName: NODE_228_DROPLIST_ITEM 1
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+              - mLabel: Transformed UV 2
+                mType: DefineSelectValue
+                mName: NODE_228_DROPLIST_ITEM 2
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+              - mLabel: Transformed UV 3
+                mType: DefineSelectValue
+                mName: NODE_228_DROPLIST_ITEM 3
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+          - mLabel: ""
+            mType: GroupEnd
+            mName: Tweak_N177
+            mWidget: group_end
+            mHint: ""
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: ""
+            mType: GroupEnd
+            mName: ENABLE_SIMPLE_REFLECTION
+            mWidget: group_end
+            mHint: ""
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: Rim Highlight
+            mType: Define
+            mName: ENABLE_RIM_HIGHLIGHT
+            mWidget: group_start
+            mHint: |-
+              Define: ENABLE_RIM_HIGHLIGHT
+              
+              'Rim highlight', aka. 'fake Fresnel effect'.
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: Color
+            mType: Property
+            mName: rimColor
+            mWidget: color
+            mHint: |-
+              Property: rimColor
+              
+              Specifies the color of the rim highlight.
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: 1.000000
+            mValues:
+              []
+          - mLabel: Intensity
+            mType: Property
+            mName: rimIntensity
+            mWidget: slider
+            mHint: |-
+              Property: rimIntensity
+              
+              Multiplied with 'Rim Color'.
+            mMin: 0.000000
+            mMax: 10.000000
+            mStep: 0.010000
+            mDefaultVal: 1.000000
+            mValues:
+              []
+          - mLabel: Exponent
+            mType: Property
+            mName: rimExponent
+            mWidget: slider
+            mHint: |-
+              Property: rimExponent
+              
+              Controls the tightness of the rim highlight.
+            mMin: 0.000000
+            mMax: 10.000000
+            mStep: 0.010000
+            mDefaultVal: 1.000000
+            mValues:
+              []
+          - mLabel: Invert
+            mType: Define
+            mName: ENABLE_RIM_INVERT
+            mWidget: checkbox
+            mHint: |-
+              Define: ENABLE_RIM_INVERT
+              
+              Inverts the effect so it's brighter in the middle of the object and darker at the edge.
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: Rim Color Texture
+            mType: Define
+            mName: Tweak_N216
+            mWidget: group_start
+            mHint: |-
+              Define: Tweak_N216
+              
+              Allows the use of a texture to modulate the rim highlight color.
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: Texture
+            mType: Property
+            mName: rimColorTex
+            mWidget: texture_group
+            mHint: "Property: rimColorTex"
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: Texture UV
+            mType: DefineSelect
+            mName: ""
+            mWidget: ""
+            mHint: Specifies the UV set used for sampling this texture.
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              - mLabel: Mesh UV 0
+                mType: DefineSelectValue
+                mName: NODE_315_DROPLIST_ITEM 0
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+              - mLabel: Mesh UV 1
+                mType: DefineSelectValue
+                mName: NODE_315_DROPLIST_ITEM 1
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+              - mLabel: Transformed UV 2
+                mType: DefineSelectValue
+                mName: NODE_315_DROPLIST_ITEM 2
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+              - mLabel: Transformed UV 3
+                mType: DefineSelectValue
+                mName: NODE_315_DROPLIST_ITEM 3
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+          - mLabel: ""
+            mType: GroupEnd
+            mName: Tweak_N216
+            mWidget: group_end
+            mHint: ""
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: ""
+            mType: GroupEnd
+            mName: ENABLE_RIM_HIGHLIGHT
+            mWidget: group_end
+            mHint: ""
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: Lighting
+            mType: Invalid
+            mName: ""
+            mWidget: group_start
+            mHint: ""
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: Metallic
+            mType: Property
+            mName: metallic
+            mWidget: slider
+            mHint: |-
+              Property: metallic
+              
+              1 means metal, 0 means non-metal (dielectric). Multiplies the metallic channel of the Material Params texture if enabled.
+            mMin: 0.000000
+            mMax: 1.000000
+            mStep: 0.010000
+            mDefaultVal: 1.000000
+            mValues:
+              []
+          - mLabel: Roughness
+            mType: Property
+            mName: roughness
+            mWidget: slider
+            mHint: |-
+              Property: roughness
+              
+              1 means completely rough (diffuse), 0 means perfectly smooth and shiny. 
+              Multiplies the roughness channel of the Material Params texture if enabled. 
+              If your roughness is 1 and your metallic is 0, it's more efficient to disable Specular alltogether.
+            mMin: 0.000000
+            mMax: 1.000000
+            mStep: 0.010000
+            mDefaultVal: 1.000000
+            mValues:
+              []
+          - mLabel: Texture
+            mType: Property
+            mName: materialParamsTex
+            mWidget: texture_group
+            mHint: |-
+              Property: materialParamsTex
+              
+              Material params texture should have: R - metalness, G - roughness, B - ambient occlusion.
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: Texture UV
+            mType: DefineSelect
+            mName: ""
+            mWidget: ""
+            mHint: Specifies the UV set used for sampling this texture.
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              - mLabel: Mesh UV 0
+                mType: DefineSelectValue
+                mName: NODE_221_DROPLIST_ITEM 0
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+              - mLabel: Mesh UV 1
+                mType: DefineSelectValue
+                mName: NODE_221_DROPLIST_ITEM 1
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+              - mLabel: Transformed UV 2
+                mType: DefineSelectValue
+                mName: NODE_221_DROPLIST_ITEM 2
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+              - mLabel: Transformed UV 3
+                mType: DefineSelectValue
+                mName: NODE_221_DROPLIST_ITEM 3
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+          - mLabel: Specular AO
+            mType: Define
+            mName: ENABLE_SPECULAR_AO
+            mWidget: group_start
+            mHint: |-
+              Define: ENABLE_SPECULAR_AO
+              
+              Allow AO to influence indirect specular lighting (reflections).
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: Intensity
+            mType: Property
+            mName: specularAoIntensity
+            mWidget: slider
+            mHint: |-
+              Property: specularAoIntensity
+              
+              Specifies the amount of influence AO has on reflections. 
+              For metals the specular AO at its darkest approaches a saturated/darkened version of the metal color (ex: dark gold for gold). 
+              For non-metals, this is essentially the same as 'Darkeing'.
+            mMin: 0.000000
+            mMax: 1.000000
+            mStep: 0.010000
+            mDefaultVal: 1.000000
+            mValues:
+              []
+          - mLabel: Darkening
+            mType: Property
+            mName: specularAoDarkening
+            mWidget: slider
+            mHint: |-
+              Property: specularAoDarkening
+              
+              For metals, this shifts the darkest AO color from a saturated version of the metal color towards pure black. 
+              For non-metals it's essentially equivalent to 'Intensity'.
+            mMin: 0.000000
+            mMax: 1.000000
+            mStep: 0.010000
+            mDefaultVal: 1.000000
+            mValues:
+              []
+          - mLabel: ""
+            mType: GroupEnd
+            mName: ENABLE_SPECULAR_AO
+            mWidget: group_end
+            mHint: ""
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: ""
+            mType: GroupEnd
+            mName: ""
+            mWidget: group_end
+            mHint: ""
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: Transformed UV 2
+            mType: Define
+            mName: ENABLE_UV2
+            mWidget: group_start
+            mHint: |-
+              Define: ENABLE_UV2
+              
+              Allows tiling and animation of texture coordinates.
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: Source
+            mType: DefineSelect
+            mName: ""
+            mWidget: ""
+            mHint: Specifies the UV set used as the base on top of which the transform is applied.
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              - mLabel: Mesh UV 0
+                mType: DefineSelectValue
+                mName: NODE_13_DROPLIST_ITEM 0
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+              - mLabel: Mesh UV 1
+                mType: DefineSelectValue
+                mName: NODE_13_DROPLIST_ITEM 1
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+              - mLabel: Screen UV
+                mType: DefineSelectValue
+                mName: NODE_13_DROPLIST_ITEM 2
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+          - mLabel: Scale
+            mType: Property
+            mName: uv2Scale
+            mWidget: spinbox
+            mHint: |-
+              Property: uv2Scale
+              
+              Allows tiling of textures.
+            mMin: ~
+            mMax: ~
+            mStep: 0.010000
+            mDefaultVal: 1.000000
+            mValues:
+              []
+          - mLabel: Offset
+            mType: Property
+            mName: uv2Offset
+            mWidget: spinbox
+            mHint: |-
+              Property: uv2Offset
+              
+              Allows shifting of textures, or controls the speed of scrolling if animation is enabled. 
+              If animation is enabled, the speed is 'Offset' UVs per second. So if 'Offset' is 2, the texture will scroll through two complete times per second.
+            mMin: ~
+            mMax: ~
+            mStep: 0.010000
+            mDefaultVal: 1.000000
+            mValues:
+              []
+          - mLabel: Animation
+            mType: Define
+            mName: uv2EnableAnimation
+            mWidget: checkbox
+            mHint: |-
+              Define: uv2EnableAnimation
+              
+              If this is enabled, the UV's will scroll. In this case the Offset specifies the speed of scrolling. 
+              The speed is 'Offset' UVs per second. So if 'Offset' is 2, the texture will scroll through two complete times per second.
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: ""
+            mType: GroupEnd
+            mName: ENABLE_UV2
+            mWidget: group_end
+            mHint: ""
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: Transformed UV 3
+            mType: Define
+            mName: ENABLE_UV3
+            mWidget: group_start
+            mHint: |-
+              Define: ENABLE_UV3
+              
+              Allows tiling and animation of texture coordinates.
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: Source
+            mType: DefineSelect
+            mName: ""
+            mWidget: ""
+            mHint: Specifies the UV set used as the base on top of which the transform is applied.
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              - mLabel: Mesh UV 0
+                mType: DefineSelectValue
+                mName: NODE_49_DROPLIST_ITEM 0
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+              - mLabel: Mesh UV 1
+                mType: DefineSelectValue
+                mName: NODE_49_DROPLIST_ITEM 1
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+              - mLabel: Screen UV
+                mType: DefineSelectValue
+                mName: NODE_49_DROPLIST_ITEM 2
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+              - mLabel: Transformed UV 2
+                mType: DefineSelectValue
+                mName: NODE_49_DROPLIST_ITEM 3
+                mWidget: ""
+                mHint: ""
+                mMin: ~
+                mMax: ~
+                mStep: ~
+                mDefaultVal: ~
+                mValues:
+                  []
+          - mLabel: Scale
+            mType: Property
+            mName: uv3Scale
+            mWidget: spinbox
+            mHint: |-
+              Property: uv3Scale
+              
+              Allows tiling of textures.
+            mMin: ~
+            mMax: ~
+            mStep: 0.010000
+            mDefaultVal: 1.000000
+            mValues:
+              []
+          - mLabel: Offset
+            mType: Property
+            mName: uv3Offset
+            mWidget: spinbox
+            mHint: |-
+              Property: uv3Offset
+              
+              Allows shifting of textures, or controls the speed of scrolling if animation is enabled. 
+              If animation is enabled, the speed is 'Offset' UVs per second. So if 'Offset' is 2, the texture will scroll through two complete times per second.
+            mMin: ~
+            mMax: ~
+            mStep: 0.010000
+            mDefaultVal: 1.000000
+            mValues:
+              []
+          - mLabel: Animation
+            mType: Define
+            mName: uv3EnableAnimation
+            mWidget: checkbox
+            mHint: |-
+              Define: uv3EnableAnimation
+              
+              If this is enabled, the UV's will scroll. In this case the Offset specifies the speed of scrolling. 
+              The speed is 'Offset' UVs per second. So if 'Offset' is 2, the texture will scroll through two complete times per second.
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: ""
+            mType: GroupEnd
+            mName: ENABLE_UV3
+            mWidget: group_end
+            mHint: ""
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: ""
+            mType: GroupEnd
+            mName: ""
+            mWidget: group_end
+            mHint: ""
+            mMin: ~
+            mMax: ~
+            mStep: ~
+            mDefaultVal: ~
+            mValues:
+              []
+          - mLabel: Alpha Test Threshold
+            mType: Property
+            mName: alphaTestThreshold
+            mWidget: slider
+            mHint: |-
+              Property: alphaTestThreshold
+              
+              When the 'Alpha Test' blend mode is enabled, pixels with alpha values lower than this disappear.
+            mMin: 0.000000
+            mMax: 1.000000
+            mStep: 0.001000
+            mDefaultVal: 0.500000
+            mValues:
+              []
+      ShaderPath: f20bf93c-98da-4e9b-877a-e094de16a544/2a24de2c83e2aa930ac62a0ba0dfdab1/Data/.hidden/f4eca80/Material.005.glsl
+      Defines:
+        []
+      Properties:
+        {}
+    - !<FileTexture/c4e164e9-9255-4599-9359-d87057aab975>
+      PackagePath: .hidden/white
+      FileInfo: !<FileTextureInfo>
+        Width: 10
+        Height: 10
+    - !<FileMesh/8c515621-2c4d-4a6e-944a-ed417ce9f288>
+      PackagePath: Meshes/latch.004
+      Info: !<MeshInfo>
+        Triangles: 6656
+        Vertices: 5284
+        Blendshapes:
+          []
+        Joints: 0
+        AabbSize: {x: 1.522724, y: 0.151394, z: 0.314953}
+    - !<Material/48746199-0ab2-4e60-ad55-60947ddf0b0b>
+      PackagePath: Materials/Material.001
+      PassesInfo:
+        - !<own> d7e10dab-2a1b-4749-85c9-89837e9f3c2f
+    - !<FileMesh/7d0efd8f-08e2-4c60-b360-56814035e283>
+      PackagePath: Meshes/paper.004
+      Info: !<MeshInfo>
+        Triangles: 512
+        Vertices: 358
+        Blendshapes:
+          []
+        Joints: 0
+        AabbSize: {x: 1.874075, y: 1.227723, z: 0.188118}
+    - !<Material/2982bd8c-ea54-4100-b061-a95fbae00412>
+      PackagePath: Materials/Material.004
+      PassesInfo:
+        - !<own> 85b552c2-df87-4f47-b2d3-9789be390ab9
+    - !<FileMesh/2b32619c-e4de-4cc5-9480-fcb2b9b9954c>
+      PackagePath: Meshes/strap.004
+      Info: !<MeshInfo>
+        Triangles: 10240
+        Vertices: 9891
+        Blendshapes:
+          []
+        Joints: 0
+        AabbSize: {x: 1.492184, y: 0.160202, z: 0.273118}
+    - !<Material/54d32580-5214-4e9f-9ed4-e2004c588c07>
+      PackagePath: Materials/Material.002
+      PassesInfo:
+        - !<own> aa23fa7a-7269-46a7-91c0-d5d8829ebe7f
+  SourceHash: 2a24de2c83e2aa930ac62a0ba0dfdab1
+  FileHash: 0d687691856724c551922347652d112c
+  NativePackageItems:
+    []
+- !<RenderMeshVisual/07212fa7-5db2-4523-9e0d-ab713f65f3e4>
+  PrefabRemaps:
+    []
+  Name: component_2
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 2982bd8c-ea54-4100-b061-a95fbae00412
+  Mesh: !<reference> 7d0efd8f-08e2-4c60-b360-56814035e283
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<SceneObject/28facaa3-e4dc-4a56-badc-5e1a672045f1>
+  PrefabRemaps:
+    []
+  Name: book
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: 0.000000, y: 0.000000, z: 0.000000}
+    scale: {x: 1.000000, y: 1.000000, z: 1.000000}
+    hasSegmentScaleCompensation: false
+  Children:
+    - !<own> 6a494ab7-881a-44b8-8bc1-23c1dbe31c31
+  Components:
+    []
+- !<SceneObject/2e493cc4-a95c-4883-8a58-38a68ad65b4c>
+  PrefabRemaps:
+    []
+  Name: latch.004
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: -0.000000, y: 0.084376, z: -0.000000}
+    rotation: {x: -90.000000, y: -0.000000, z: 0.000000}
+    scale: {x: 0.703278, y: 0.703278, z: 0.703278}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> cf3afe88-7de8-422c-8bb0-2fe53f5627b4
+- !<RenderMeshVisual/459a4073-e821-4961-8c2f-df506c29c8fd>
+  PrefabRemaps:
+    []
+  Name: component_0
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 0ef9d783-9d58-4330-9b19-92e50847cfe3
+  Mesh: !<reference> 368cf105-8a98-442d-aee2-11cedb15ed3c
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<SceneObject/6a494ab7-881a-44b8-8bc1-23c1dbe31c31>
+  PrefabRemaps:
+    []
+  Name: book3.002
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: 0.000000, y: 0.000000, z: 0.000000}
+    rotation: {x: -180.000000, y: 77.363976, z: -180.000000}
+    scale: {x: 99.999992, y: 100.000000, z: 99.999992}
+    hasSegmentScaleCompensation: false
+  Children:
+    - !<own> cbb43f74-e2c9-4dfe-815c-c595e349edf4
+    - !<own> 2e493cc4-a95c-4883-8a58-38a68ad65b4c
+    - !<own> 924ecc77-b692-46bb-a3b9-8415f6e2bbbc
+    - !<own> 9da3c870-170e-4d82-af7e-8a789916002c
+  Components:
+    []
+- !<PassInfo/85b552c2-df87-4f47-b2d3-9789be390ab9>
+  CachedProperties:
+    - Port_Depth_N004:
+        typeIdx: 1
+        value: 1.000000
+    - Port_FinalColor1_N004:
+        typeIdx: 5
+        value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    - Port_FinalColor2_N004:
+        typeIdx: 5
+        value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    - Port_FinalColor3_N004:
+        typeIdx: 5
+        value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    - Port_GSplatPointSize_N004:
+        typeIdx: 1
+        value: 0.000000
+    - Port_RayDirection_N004:
+        typeIdx: 4
+        value: {x: 0.000000, y: 1.000000, z: 0.000000}
+    - Port_RayOrigin_N004:
+        typeIdx: 4
+        value: {x: 0.000000, y: 0.000000, z: 0.000000}
+    - Port_WorldNormal_N004:
+        typeIdx: 4
+        value: {x: 0.000000, y: 1.000000, z: 0.000000}
+    - Port_WorldPosition_N004:
+        typeIdx: 4
+        value: {x: 0.000000, y: 0.000000, z: 0.000000}
+    - Port_WorldTangent_N004:
+        typeIdx: 4
+        value: {x: 0.000000, y: 0.000000, z: 1.000000}
+    - alpha:
+        typeIdx: 1
+        value: 0.000000
+    - selfIllum:
+        typeIdx: 1
+        value: 0.000000
+  DepthWrite: true
+  DepthTest: true
+  DepthFunction: LessEqual
+  TwoSided: false
+  ColorMask: {x: true, y: true, z: true, w: true}
+  CullMode: Back
+  PolygonOffset: {x: 0.000000, y: 0.000000}
+  FrustumCulling: Auto
+  FrustumCullPad: 0.000000
+  InstanceCount: 1
+  Defines:
+    - ENABLE_DIFFUSE_LIGHTING
+    - ENABLE_DIRECT_LIGHTS
+    - ENABLE_ENVIRONMENT_MAP
+    - ENABLE_LIGHTING
+    - ENABLE_SPECULAR_LIGHTING
+    - ENABLE_TONE_MAPPING
+    - ENABLE_VERTEX_COLOR_NONE
+    - baseTexUV 0
+    - emissiveTexUV 0
+    - materialParamsTexUV 0
+    - normalTexUV 0
+    - opacityTexUV 0
+    - rimColorTexUV 0
+  BlendMode: Disabled
+  Properties:
+    PreviewEnabled:
+      typeIdx: 0
+      value: 0
+    baseColor:
+      typeIdx: 5
+      value: {x: 0.713678, y: 0.800032, z: 0.438794, w: 1.000000}
+    materialParamsTex:
+      typeIdx: 9
+      value:
+        id: c4e164e9-9255-4599-9359-d87057aab975
+        sampler:
+          filteringMode: Bilinear
+          wrapModeU: ClampToEdge
+          wrapModeV: ClampToEdge
+          wrapModeW: ClampToEdge
+          borderColor: {x: 0.000000, y: 0.000000, z: 0.000000, w: 0.000000}
+          mipmaps: false
+        type: Texture2D
+    materialParamsTexBorderColor:
+      typeIdx: 5
+      value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    materialParamsTexDims:
+      typeIdx: 5
+      value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    materialParamsTexTransform:
+      typeIdx: 7
+      value:
+        0: {x: 1.000000, y: 0.000000, z: 0.000000}
+        1: {x: 0.000000, y: 1.000000, z: 0.000000}
+        2: {x: 0.000000, y: 0.000000, z: 1.000000}
+    materialParamsTexUvMinMax:
+      typeIdx: 5
+      value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    metallic:
+      typeIdx: 1
+      value: 0.000000
+    overrideTimeDelta:
+      typeIdx: 1
+      value: 0.000000
+    overrideTimeElapsed:
+      typeIdx: 1
+      value: 0.000000
+    overrideTimeEnabled:
+      typeIdx: 0
+      value: 0
+    roughness:
+      typeIdx: 1
+      value: 1.000000
+    uv2Offset:
+      typeIdx: 3
+      value: {x: 1.000000, y: 1.000000}
+    uv2Scale:
+      typeIdx: 3
+      value: {x: 1.000000, y: 1.000000}
+    uv3Offset:
+      typeIdx: 3
+      value: {x: 1.000000, y: 1.000000}
+    uv3Scale:
+      typeIdx: 3
+      value: {x: 1.000000, y: 1.000000}
+  Pass: !<reference> fedfb487-2246-46cc-94ef-752bf6b5ad4c
+- !<SceneObject/924ecc77-b692-46bb-a3b9-8415f6e2bbbc>
+  PrefabRemaps:
+    []
+  Name: paper.004
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: -0.000000, y: 0.084376, z: -0.000000}
+    rotation: {x: -90.000000, y: -0.000000, z: 0.000000}
+    scale: {x: 0.703278, y: 0.703278, z: 0.703278}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 07212fa7-5db2-4523-9e0d-ab713f65f3e4
+- !<SceneObject/9da3c870-170e-4d82-af7e-8a789916002c>
+  PrefabRemaps:
+    []
+  Name: strap.004
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: -0.000000, y: 0.084376, z: -0.000000}
+    rotation: {x: -90.000000, y: -0.000000, z: 0.000000}
+    scale: {x: 0.703278, y: 0.703278, z: 0.703278}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> d69eb7b3-88cd-4b92-b099-969e0e0d5fa7
+- !<PassInfo/aa23fa7a-7269-46a7-91c0-d5d8829ebe7f>
+  CachedProperties:
+    - Port_Depth_N004:
+        typeIdx: 1
+        value: 1.000000
+    - Port_FinalColor1_N004:
+        typeIdx: 5
+        value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    - Port_FinalColor2_N004:
+        typeIdx: 5
+        value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    - Port_FinalColor3_N004:
+        typeIdx: 5
+        value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    - Port_GSplatPointSize_N004:
+        typeIdx: 1
+        value: 0.000000
+    - Port_RayDirection_N004:
+        typeIdx: 4
+        value: {x: 0.000000, y: 1.000000, z: 0.000000}
+    - Port_RayOrigin_N004:
+        typeIdx: 4
+        value: {x: 0.000000, y: 0.000000, z: 0.000000}
+    - Port_WorldNormal_N004:
+        typeIdx: 4
+        value: {x: 0.000000, y: 1.000000, z: 0.000000}
+    - Port_WorldPosition_N004:
+        typeIdx: 4
+        value: {x: 0.000000, y: 0.000000, z: 0.000000}
+    - Port_WorldTangent_N004:
+        typeIdx: 4
+        value: {x: 0.000000, y: 0.000000, z: 1.000000}
+    - alpha:
+        typeIdx: 1
+        value: 0.000000
+    - selfIllum:
+        typeIdx: 1
+        value: 0.000000
+  DepthWrite: true
+  DepthTest: true
+  DepthFunction: LessEqual
+  TwoSided: false
+  ColorMask: {x: true, y: true, z: true, w: true}
+  CullMode: Back
+  PolygonOffset: {x: 0.000000, y: 0.000000}
+  FrustumCulling: Auto
+  FrustumCullPad: 0.000000
+  InstanceCount: 1
+  Defines:
+    - ENABLE_DIFFUSE_LIGHTING
+    - ENABLE_DIRECT_LIGHTS
+    - ENABLE_ENVIRONMENT_MAP
+    - ENABLE_LIGHTING
+    - ENABLE_SPECULAR_LIGHTING
+    - ENABLE_TONE_MAPPING
+    - ENABLE_VERTEX_COLOR_NONE
+    - baseTexUV 0
+    - emissiveTexUV 0
+    - materialParamsTexUV 0
+    - normalTexUV 0
+    - opacityTexUV 0
+    - rimColorTexUV 0
+  BlendMode: Disabled
+  Properties:
+    PreviewEnabled:
+      typeIdx: 0
+      value: 0
+    baseColor:
+      typeIdx: 5
+      value: {x: 0.454577, y: 0.116294, z: 0.058596, w: 1.000000}
+    materialParamsTex:
+      typeIdx: 9
+      value:
+        id: c4e164e9-9255-4599-9359-d87057aab975
+        sampler:
+          filteringMode: Bilinear
+          wrapModeU: ClampToEdge
+          wrapModeV: ClampToEdge
+          wrapModeW: ClampToEdge
+          borderColor: {x: 0.000000, y: 0.000000, z: 0.000000, w: 0.000000}
+          mipmaps: false
+        type: Texture2D
+    materialParamsTexBorderColor:
+      typeIdx: 5
+      value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    materialParamsTexDims:
+      typeIdx: 5
+      value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    materialParamsTexTransform:
+      typeIdx: 7
+      value:
+        0: {x: 1.000000, y: 0.000000, z: 0.000000}
+        1: {x: 0.000000, y: 1.000000, z: 0.000000}
+        2: {x: 0.000000, y: 0.000000, z: 1.000000}
+    materialParamsTexUvMinMax:
+      typeIdx: 5
+      value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    metallic:
+      typeIdx: 1
+      value: 0.000000
+    overrideTimeDelta:
+      typeIdx: 1
+      value: 0.000000
+    overrideTimeElapsed:
+      typeIdx: 1
+      value: 0.000000
+    overrideTimeEnabled:
+      typeIdx: 0
+      value: 0
+    roughness:
+      typeIdx: 1
+      value: 1.000000
+    uv2Offset:
+      typeIdx: 3
+      value: {x: 1.000000, y: 1.000000}
+    uv2Scale:
+      typeIdx: 3
+      value: {x: 1.000000, y: 1.000000}
+    uv3Offset:
+      typeIdx: 3
+      value: {x: 1.000000, y: 1.000000}
+    uv3Scale:
+      typeIdx: 3
+      value: {x: 1.000000, y: 1.000000}
+  Pass: !<reference> fedfb487-2246-46cc-94ef-752bf6b5ad4c
+- !<SceneObject/cbb43f74-e2c9-4dfe-815c-c595e349edf4>
+  PrefabRemaps:
+    []
+  Name: cover.005
+  Enabled: true
+  Layers: 1
+  LocalTransform:
+    position: {x: -0.000000, y: 0.084376, z: -0.000000}
+    rotation: {x: -90.000000, y: -0.000000, z: 0.000000}
+    scale: {x: 0.703278, y: 0.703278, z: 0.703278}
+    hasSegmentScaleCompensation: false
+  Children:
+    []
+  Components:
+    - !<own> 459a4073-e821-4961-8c2f-df506c29c8fd
+- !<RenderMeshVisual/cf3afe88-7de8-422c-8bb0-2fe53f5627b4>
+  PrefabRemaps:
+    []
+  Name: component_1
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 48746199-0ab2-4e60-ad55-60947ddf0b0b
+  Mesh: !<reference> 8c515621-2c4d-4a6e-944a-ed417ce9f288
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<RenderMeshVisual/d69eb7b3-88cd-4b92-b099-969e0e0d5fa7>
+  PrefabRemaps:
+    []
+  Name: component_3
+  Enabled: true
+  RenderOrder: 0
+  StretchMode: Stretch
+  VerticalAlignment: Center
+  HorizontalAlignment: Center
+  MeshShadowMode: None
+  ShadowColor: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+  ShadowDensity: 1.000000
+  Materials:
+    - !<reference> 54d32580-5214-4e9f-9ed4-e2004c588c07
+  Mesh: !<reference> 2b32619c-e4de-4cc5-9480-fcb2b9b9954c
+  Skin: !<reference> 00000000-0000-0000-0000-000000000000
+  BlendShapesEnabled: true
+  BlendNormals: false
+  BlendShapes:
+    {}
+- !<PassInfo/d7e10dab-2a1b-4749-85c9-89837e9f3c2f>
+  CachedProperties:
+    - Port_Depth_N004:
+        typeIdx: 1
+        value: 1.000000
+    - Port_FinalColor1_N004:
+        typeIdx: 5
+        value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    - Port_FinalColor2_N004:
+        typeIdx: 5
+        value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    - Port_FinalColor3_N004:
+        typeIdx: 5
+        value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    - Port_GSplatPointSize_N004:
+        typeIdx: 1
+        value: 0.000000
+    - Port_RayDirection_N004:
+        typeIdx: 4
+        value: {x: 0.000000, y: 1.000000, z: 0.000000}
+    - Port_RayOrigin_N004:
+        typeIdx: 4
+        value: {x: 0.000000, y: 0.000000, z: 0.000000}
+    - Port_WorldNormal_N004:
+        typeIdx: 4
+        value: {x: 0.000000, y: 1.000000, z: 0.000000}
+    - Port_WorldPosition_N004:
+        typeIdx: 4
+        value: {x: 0.000000, y: 0.000000, z: 0.000000}
+    - Port_WorldTangent_N004:
+        typeIdx: 4
+        value: {x: 0.000000, y: 0.000000, z: 1.000000}
+    - alpha:
+        typeIdx: 1
+        value: 0.000000
+    - selfIllum:
+        typeIdx: 1
+        value: 0.000000
+  DepthWrite: true
+  DepthTest: true
+  DepthFunction: LessEqual
+  TwoSided: false
+  ColorMask: {x: true, y: true, z: true, w: true}
+  CullMode: Back
+  PolygonOffset: {x: 0.000000, y: 0.000000}
+  FrustumCulling: Auto
+  FrustumCullPad: 0.000000
+  InstanceCount: 1
+  Defines:
+    - ENABLE_DIFFUSE_LIGHTING
+    - ENABLE_DIRECT_LIGHTS
+    - ENABLE_ENVIRONMENT_MAP
+    - ENABLE_LIGHTING
+    - ENABLE_SPECULAR_LIGHTING
+    - ENABLE_TONE_MAPPING
+    - ENABLE_VERTEX_COLOR_NONE
+    - baseTexUV 0
+    - emissiveTexUV 0
+    - materialParamsTexUV 0
+    - normalTexUV 0
+    - opacityTexUV 0
+    - rimColorTexUV 0
+  BlendMode: Disabled
+  Properties:
+    PreviewEnabled:
+      typeIdx: 0
+      value: 0
+    baseColor:
+      typeIdx: 5
+      value: {x: 0.800339, y: 0.267921, z: 0.004676, w: 1.000000}
+    materialParamsTex:
+      typeIdx: 9
+      value:
+        id: c4e164e9-9255-4599-9359-d87057aab975
+        sampler:
+          filteringMode: Bilinear
+          wrapModeU: ClampToEdge
+          wrapModeV: ClampToEdge
+          wrapModeW: ClampToEdge
+          borderColor: {x: 0.000000, y: 0.000000, z: 0.000000, w: 0.000000}
+          mipmaps: false
+        type: Texture2D
+    materialParamsTexBorderColor:
+      typeIdx: 5
+      value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    materialParamsTexDims:
+      typeIdx: 5
+      value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    materialParamsTexTransform:
+      typeIdx: 7
+      value:
+        0: {x: 1.000000, y: 0.000000, z: 0.000000}
+        1: {x: 0.000000, y: 1.000000, z: 0.000000}
+        2: {x: 0.000000, y: 0.000000, z: 1.000000}
+    materialParamsTexUvMinMax:
+      typeIdx: 5
+      value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    metallic:
+      typeIdx: 1
+      value: 0.000000
+    overrideTimeDelta:
+      typeIdx: 1
+      value: 0.000000
+    overrideTimeElapsed:
+      typeIdx: 1
+      value: 0.000000
+    overrideTimeEnabled:
+      typeIdx: 0
+      value: 0
+    roughness:
+      typeIdx: 1
+      value: 1.000000
+    uv2Offset:
+      typeIdx: 3
+      value: {x: 1.000000, y: 1.000000}
+    uv2Scale:
+      typeIdx: 3
+      value: {x: 1.000000, y: 1.000000}
+    uv3Offset:
+      typeIdx: 3
+      value: {x: 1.000000, y: 1.000000}
+    uv3Scale:
+      typeIdx: 3
+      value: {x: 1.000000, y: 1.000000}
+  Pass: !<reference> fedfb487-2246-46cc-94ef-752bf6b5ad4c
+- !<PassInfo/e8a9bd33-db9a-4dda-922e-86550895c8f3>
+  CachedProperties:
+    - Port_Depth_N004:
+        typeIdx: 1
+        value: 1.000000
+    - Port_FinalColor1_N004:
+        typeIdx: 5
+        value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    - Port_FinalColor2_N004:
+        typeIdx: 5
+        value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    - Port_FinalColor3_N004:
+        typeIdx: 5
+        value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    - Port_GSplatPointSize_N004:
+        typeIdx: 1
+        value: 0.000000
+    - Port_RayDirection_N004:
+        typeIdx: 4
+        value: {x: 0.000000, y: 1.000000, z: 0.000000}
+    - Port_RayOrigin_N004:
+        typeIdx: 4
+        value: {x: 0.000000, y: 0.000000, z: 0.000000}
+    - Port_WorldNormal_N004:
+        typeIdx: 4
+        value: {x: 0.000000, y: 1.000000, z: 0.000000}
+    - Port_WorldPosition_N004:
+        typeIdx: 4
+        value: {x: 0.000000, y: 0.000000, z: 0.000000}
+    - Port_WorldTangent_N004:
+        typeIdx: 4
+        value: {x: 0.000000, y: 0.000000, z: 1.000000}
+    - alpha:
+        typeIdx: 1
+        value: 0.000000
+    - selfIllum:
+        typeIdx: 1
+        value: 0.000000
+  DepthWrite: true
+  DepthTest: true
+  DepthFunction: LessEqual
+  TwoSided: false
+  ColorMask: {x: true, y: true, z: true, w: true}
+  CullMode: Back
+  PolygonOffset: {x: 0.000000, y: 0.000000}
+  FrustumCulling: Auto
+  FrustumCullPad: 0.000000
+  InstanceCount: 1
+  Defines:
+    - ENABLE_DIFFUSE_LIGHTING
+    - ENABLE_DIRECT_LIGHTS
+    - ENABLE_ENVIRONMENT_MAP
+    - ENABLE_LIGHTING
+    - ENABLE_SPECULAR_LIGHTING
+    - ENABLE_TONE_MAPPING
+    - ENABLE_VERTEX_COLOR_NONE
+    - baseTexUV 0
+    - emissiveTexUV 0
+    - materialParamsTexUV 0
+    - normalTexUV 0
+    - opacityTexUV 0
+    - rimColorTexUV 0
+  BlendMode: Disabled
+  Properties:
+    PreviewEnabled:
+      typeIdx: 0
+      value: 0
+    baseColor:
+      typeIdx: 5
+      value: {x: 0.120393, y: 0.426254, z: 0.152141, w: 1.000000}
+    materialParamsTex:
+      typeIdx: 9
+      value:
+        id: c4e164e9-9255-4599-9359-d87057aab975
+        sampler:
+          filteringMode: Bilinear
+          wrapModeU: ClampToEdge
+          wrapModeV: ClampToEdge
+          wrapModeW: ClampToEdge
+          borderColor: {x: 0.000000, y: 0.000000, z: 0.000000, w: 0.000000}
+          mipmaps: false
+        type: Texture2D
+    materialParamsTexBorderColor:
+      typeIdx: 5
+      value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    materialParamsTexDims:
+      typeIdx: 5
+      value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    materialParamsTexTransform:
+      typeIdx: 7
+      value:
+        0: {x: 1.000000, y: 0.000000, z: 0.000000}
+        1: {x: 0.000000, y: 1.000000, z: 0.000000}
+        2: {x: 0.000000, y: 0.000000, z: 1.000000}
+    materialParamsTexUvMinMax:
+      typeIdx: 5
+      value: {x: 1.000000, y: 1.000000, z: 1.000000, w: 1.000000}
+    metallic:
+      typeIdx: 1
+      value: 0.000000
+    overrideTimeDelta:
+      typeIdx: 1
+      value: 0.000000
+    overrideTimeElapsed:
+      typeIdx: 1
+      value: 0.000000
+    overrideTimeEnabled:
+      typeIdx: 0
+      value: 0
+    roughness:
+      typeIdx: 1
+      value: 1.000000
+    uv2Offset:
+      typeIdx: 3
+      value: {x: 1.000000, y: 1.000000}
+    uv2Scale:
+      typeIdx: 3
+      value: {x: 1.000000, y: 1.000000}
+    uv3Offset:
+      typeIdx: 3
+      value: {x: 1.000000, y: 1.000000}
+    uv3Scale:
+      typeIdx: 3
+      value: {x: 1.000000, y: 1.000000}
+  Pass: !<reference> fedfb487-2246-46cc-94ef-752bf6b5ad4c

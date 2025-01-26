@@ -1,0 +1,13 @@
+- !<AssetCache/8a5211b5-95d1-632e-6db0-909a257f6287>
+  AssetFiles:
+    50529d55-4894-4a58-afcd-9f70de62cbab: 86031c52-2532-41a5-bdf3-5bf32fb52377/8a5211b595d1632e6db0909a257f6287/Data/bunbun.png
+  Assets:
+    - !<FileTexture/50529d55-4894-4a58-afcd-9f70de62cbab>
+      PackagePath: ""
+      FileInfo: !<FileTextureInfo>
+        Width: 562
+        Height: 592
+  SourceHash: 8a5211b595d1632e6db0909a257f6287
+  FileHash: f15ebd742360ebbe2fec5265914905fd
+  NativePackageItems:
+    []

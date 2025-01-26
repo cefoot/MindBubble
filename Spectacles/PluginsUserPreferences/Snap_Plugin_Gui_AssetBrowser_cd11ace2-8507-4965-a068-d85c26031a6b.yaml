@@ -1,0 +1,114 @@
+CollapsedEntities:
+  type: stringset
+  value:
+    size: 108
+    values:
+      - Image.mat
+      - Scene1
+      - Scene1/Base.png
+      - "Scene1/Custom Location Asset [Input ID] 1.location"
+      - "Scene1/Custom Location Asset [Input ID].location"
+      - Scene1/Custom Location Mesh 1.location_mesh
+      - Scene1/Custom Location Mesh.location_mesh
+      - Scene1/Device Camera Texture.deviceCameraTexture
+      - Scene1/Echopark.hdr
+      - Scene1/Echopark.hdr/Diffuse
+      - Scene1/Echopark.hdr/Specular
+      - Scene1/Empty.ss_graph
+      - Scene1/FaceMeshTexture.jpg
+      - Scene1/FrontCameraMirror.js
+      - Scene1/Image 1.mat
+      - Scene1/Image 2.mat
+      - Scene1/Image 5.mat
+      - Scene1/Image.mat
+      - Scene1/Image.png
+      - Scene1/ImageMaterial 1.mat
+      - Scene1/ImageMaterial 2.mat
+      - Scene1/ImageMaterial 3.mat
+      - Scene1/ImageMaterial 4.mat
+      - Scene1/ImageMaterial.mat
+      - Scene1/Images
+      - Scene1/Images/RealityHackScreenshot_1.png
+      - Scene1/Location Material 1.mat
+      - Scene1/Location Material.mat
+      - Scene1/MITRealityHack-4C-Logo-2-01.png
+      - Scene1/MaterialParams.png
+      - Scene1/Normal.png
+      - Scene1/Objects
+      - Scene1/Objects/Sphere.mesh
+      - Scene1/Objects/musicNote1.fbx/.hidden
+      - Scene1/Objects/musicNote1.fbx/.hidden/note
+      - Scene1/Objects/musicNote1.fbx/.hidden/white
+      - Scene1/Objects/musicNote1.fbx/Materials/note
+      - Scene1/Objects/musicNote1.fbx/Meshes
+      - Scene1/Objects/musicNote1.fbx/Meshes/Cube
+      - Scene1/Objects/musicNote1.fbx/Meshes/Cube.001
+      - Scene1/Objects/musicNote1.fbx/Meshes/Cylinder
+      - Scene1/Objects/musicNote1.fbx/Meshes/Cylinder.001
+      - Scene1/Objects/musicNote1.fbx/Meshes/Cylinder.002
+      - Scene1/Objects/musicNote1.fbx/Meshes/Cylinder.003
+      - Scene1/Objects/musicNote1.fbx/musicNote1
+      - Scene1/Objects/plant.fbx
+      - Scene1/Objects/plant.fbx/.hidden
+      - Scene1/Objects/plant.fbx/.hidden/plant
+      - Scene1/Objects/plant.fbx/.hidden/white
+      - Scene1/Objects/plant.fbx/Materials
+      - Scene1/Objects/plant.fbx/Materials/plant
+      - Scene1/Objects/plant.fbx/Meshes
+      - Scene1/Objects/plant.fbx/Meshes/Cube.004
+      - Scene1/Objects/plant.fbx/Meshes/Cube.005
+      - Scene1/Objects/plant.fbx/Meshes/Cube.006
+      - Scene1/Objects/plant.fbx/Meshes/Cylinder.005
+      - Scene1/Objects/plant.fbx/plant
+      - Scene1/PBR 1.mat
+      - Scene1/PBR 2.mat
+      - Scene1/PBR.mat
+      - Scene1/Render Target.renderTarget
+      - Scene1/Scene.scene
+      - Scene1/Scripts
+      - Scene1/Scripts/Bounce.js
+      - Scene1/Scripts/Float.js
+      - Scene1/Uber PBR.mat
+      - Scene1/World Mesh 1.worldmesh
+      - Scene1/World Mesh.mat
+      - Scene1/World Mesh.worldmesh
+      - Scene1/book.fbx
+      - Scene1/book.fbx/.hidden
+      - Scene1/book.fbx/.hidden/Material.001
+      - Scene1/book.fbx/.hidden/white
+      - Scene1/book.fbx/Materials
+      - Scene1/book.fbx/Materials/Material.001
+      - Scene1/book.fbx/Materials/Material.002
+      - Scene1/book.fbx/Materials/Material.004
+      - Scene1/book.fbx/Materials/Material.005
+      - Scene1/book.fbx/Meshes
+      - Scene1/book.fbx/Meshes/cover.005
+      - Scene1/book.fbx/Meshes/latch.004
+      - Scene1/book.fbx/Meshes/paper.004
+      - Scene1/book.fbx/Meshes/strap.004
+      - Scene1/book.fbx/book
+      - Scene1/bunbun.png
+      - Scene1/flat.ss_graph
+      - Scene1/image_unlit.ss_graph
+      - Scene1/location_material.ss_graph
+      - Scene1/pbr.ss_graph
+      - Scene1/uber_pbr.ss_graph
+      - Scene1/world_mesh.ss_graph
+      - bubble.fbx/.hidden/bubble
+      - bubble.fbx/.hidden/white
+      - bubble.fbx/Materials/bubble
+      - bubble.fbx/Meshes
+      - bubble.fbx/Meshes/Cube
+      - bubble.fbx/bubble
+      - glass.fbx
+      - glass.fbx/.hidden
+      - glass.fbx/.hidden/glassBody
+      - glass.fbx/.hidden/white
+      - glass.fbx/Materials
+      - glass.fbx/Materials/glassBody
+      - glass.fbx/Materials/glassPlates
+      - glass.fbx/Meshes
+      - glass.fbx/Meshes/Cube.009
+      - glass.fbx/Meshes/Cube.010
+      - glass.fbx/glass
+  options: 4
