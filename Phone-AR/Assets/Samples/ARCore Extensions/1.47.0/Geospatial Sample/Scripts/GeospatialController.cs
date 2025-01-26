@@ -55,7 +55,6 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
     using TMPro;
     using Newtonsoft.Json;
     using UnityEngine.Events;
-    using UnityEngine.Rendering.Universal;
 
     /// <summary>
     /// Controller for Geospatial sample.
@@ -347,6 +346,7 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
         private IEnumerator _asyncCheck = null;
         private GeospatialPose _lastValidPose;
         private bool _debugMode = false;
+        private const string OLD_KEYWORDS = "OLD_KEYWORDS";
 
         /// <summary>
         /// Callback handling "Get Started" button click event in Privacy Prompt.
@@ -393,6 +393,8 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
         }
 
 #if UNITY_EDITOR
+
+        private string dummy = "";
         private void OnGUI()
         {
             GUILayout.BeginHorizontal();
@@ -415,9 +417,37 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
             {
                 GetComponentInChildren<BubbleContent>().Pop();
             }
+            dummy = GUILayout.TextField(dummy);
+            if (GUILayout.Button("add keyword"))
+            {
+                UpdateHashTag(dummy);
+            }
+            if (GUILayout.Button("place hashtags"))
+            {
+                PlaceOldKeywords(Camera.main.transform.position + Camera.main.transform.forward + Vector3.down * 0.2f);
+            }
             GUILayout.EndHorizontal();
         }
 #endif
+
+        public void PlaceOldKeywords(Vector3 worldPos)
+        {
+            if (!PlayerPrefs.HasKey(OLD_KEYWORDS)) return;
+            var keywordsJson = PlayerPrefs.GetString(OLD_KEYWORDS);
+            var keywords = JsonConvert.DeserializeObject<string[]>(keywordsJson);
+            var bubbles = new List<BubbleContent>();
+            bubbles.AddRange(CreateBubbles(
+                keywords.ToDictionary(k => k, k => new List<string>()), //text to place in bubbles
+                worldPos, //where place bubbles
+                worldPos - Camera.main.transform.position, //which direction should bubbles face
+                .3f, //whats the radius of the desired circle
+                t =>
+                { //action when bubble pops
+                    HashtagInputField.text = t;
+                    LoadBubbles();
+                    bubbles.ForEach(b => Destroy(b.gameObject));
+                }));
+        }
 
         public void LoadBubbles()
         {
@@ -429,7 +459,6 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
             StartedLoadingBubbles?.Invoke();
             try
             {
-
                 Array.ForEach(GetComponentsInChildren<BubbleContent>(), b => b.Pop(false));
                 var bubbles = GetComponentsInChildren<BubbleContent>();
                 foreach (var item in bubbles)
@@ -438,10 +467,10 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
                     yield return new WaitForSecondsRealtime(UnityEngine.Random.Range(0f, 0.2f));
                 }
                 var hashTag = HashtagInputField.text;
+                UpdateHashTag(hashTag);
                 HashtagInputField.text = String.Empty;
                 using (var client = new HttpClient())
                 {
-
                     var uri = $"https://realityhack25-minbubble.azurewebsites.net/api/mindBubble/{hashTag}/{_lastValidPose.Latitude.ToString("F6", System.Globalization.CultureInfo.InvariantCulture)}/{_lastValidPose.Longitude.ToString("F6", System.Globalization.CultureInfo.InvariantCulture)}?";
                     Debug.Log($"Sending Request: {uri}");
                     var request = client.GetAsync($"{uri}code=6yo_NxBLKz-gg56I5UuEhBdecycemSTn4Wblo-YZUhmmAzFuAfsZrw%3D%3D");
@@ -465,17 +494,35 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
             }
         }
 
+        private void UpdateHashTag(string hashTag)
+        {
+            List<string> hashTags = new List<string>();
+            if (PlayerPrefs.HasKey(OLD_KEYWORDS))
+            {
+                var keywordsJson = PlayerPrefs.GetString(OLD_KEYWORDS);
+                hashTags.AddRange(JsonConvert.DeserializeObject<string[]>(keywordsJson));
+            }
+            if (hashTags.Any(s => s.Equals(hashTag, StringComparison.InvariantCultureIgnoreCase))) return;
+            hashTags.Add(hashTag);
+            if (hashTags.Count > 5)
+            {
+                hashTags.RemoveAt(0);
+            }
+            PlayerPrefs.SetString(OLD_KEYWORDS, JsonConvert.SerializeObject(hashTags.ToArray()));
+            PlayerPrefs.Save();
+        }
+
         public void CreateBubbles(string jsonContentThemes, Vector3 aroundWorldPos, Vector3 lookDir)
         {
             // Deserialize the content into a ThemesContainer
             var container = JsonConvert.DeserializeObject<ThemesContainer>(jsonContentThemes);
             var topics = container.Themes;
-            CreateBubbles(topics, aroundWorldPos, lookDir);
+            CreateBubbles(topics, aroundWorldPos, lookDir, .5f);
         }
 
-        public void CreateBubbles(Dictionary<string, List<string>> topics, Vector3 aroundWorldPos, Vector3 lookDir)
+        public List<BubbleContent> CreateBubbles(Dictionary<string, List<string>> topics, Vector3 aroundWorldPos, Vector3 lookDir, float radius, Action<string> popAction = null)
         {
-
+            var bubbles = new List<BubbleContent>();
             // Normalize the look direction
             lookDir.Normalize();
 
@@ -487,8 +534,6 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
             }
             Vector3 right = Vector3.Cross(up, lookDir).normalized;
             up = Vector3.Cross(lookDir, right).normalized;
-
-            float radius = .5f; // Radius of the floating plane
             float angleStep = 360.0f / topics.Count; // Angle between each bubble
             int idx = 0;
 
@@ -503,6 +548,9 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
 
                 // Instantiate the bubble
                 var bubble = GameObject.Instantiate(BubblePrefab, transform);
+                bubbles.Add(bubble);
+                if (popAction != null)
+                    bubble.PopCallback = () => popAction(item.Key);
                 bubble.Posts = item.Value.ToArray();
                 bubble.GetComponentInChildren<Text3D>().Text = item.Key;
 
@@ -512,6 +560,7 @@ namespace Google.XR.ARCoreExtensions.Samples.Geospatial
 
                 idx++;
             }
+            return bubbles;
         }
 
 

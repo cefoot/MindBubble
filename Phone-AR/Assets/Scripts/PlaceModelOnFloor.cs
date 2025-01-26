@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Google.XR.ARCoreExtensions;
+using Google.XR.ARCoreExtensions.Samples.Geospatial;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.XR.ARFoundation;
@@ -55,6 +56,7 @@ public class PlaceModelOnFloor : MonoBehaviour
                 Debug.Log("Model placed at: " + hitPose.position);
                 _isPlaced = true;
                 ModelPlacedOnFloor?.Invoke();
+                GeospatialController.Instance.PlaceOldKeywords(hitPose.position);
             }
             else
             {

@@ -5,11 +5,14 @@ using System.Linq;
 using Google.XR.ARCoreExtensions.Samples.Geospatial;
 using NUnit.Framework;
 using UnityEngine;
+using static UnityEngine.Application;
 
 public class BubbleContent : MonoBehaviour
 {
 
     public string[] Posts;
+
+    public Action PopCallback;
 
     public void Pop(bool createChildContent = true)
     {
@@ -20,7 +23,7 @@ public class BubbleContent : MonoBehaviour
     {
         if (createChildContent)
         {
-            GeospatialController.Instance.CreateBubbles(Posts.ToDictionary(s => s, s => new System.Collections.Generic.List<string>()), Camera.main.transform.position + Camera.main.transform.forward, Camera.main.transform.forward);
+            GeospatialController.Instance.CreateBubbles(Posts.ToDictionary(s => s, s => new System.Collections.Generic.List<string>()), Camera.main.transform.position + Camera.main.transform.forward, Camera.main.transform.forward, .5f);
         }
         var sounds = GetComponentsInChildren<AudioSource>(true);
         var sound = sounds[UnityEngine.Random.Range(0, sounds.Length - 1)];
@@ -29,6 +32,7 @@ public class BubbleContent : MonoBehaviour
         yield return new WaitUntil(() => sound.isPlaying);
         //wait until clip finished playing
         yield return new WaitUntil(() => !sound.isPlaying);
+        PopCallback?.Invoke();
         Destroy(gameObject);
     }
 }
