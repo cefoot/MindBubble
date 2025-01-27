@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
+using TMPro;
 using UnityEngine;
 using static UnityEngine.Application;
 
@@ -11,11 +12,35 @@ public class BubbleContent : MonoBehaviour
 
     public string[] Posts;
 
-    public Action PopCallback;
+    public Action<string> PopCallback;
+
+#if UNITY_EDITOR
+    private void OnGUI()
+    {
+        GUILayout.BeginVertical();
+        if (GUILayout.Button("pop"))
+        {
+            Pop();
+        }
+        GUILayout.EndVertical();
+    }
+#endif
 
     public void Pop(bool createChildContent = true)
     {
         StartCoroutine(PopAsync(createChildContent));
+    }
+
+    public string Text
+    {
+        get
+        {
+            return GetComponentInChildren<TMP_Text>().text;
+        }
+        set
+        {
+            GetComponentInChildren<TMP_Text>().text = value;
+        }
     }
 
     private IEnumerator PopAsync(bool createChildContent)
@@ -31,7 +56,7 @@ public class BubbleContent : MonoBehaviour
         yield return new WaitUntil(() => sound.isPlaying);
         //wait until clip finished playing
         yield return new WaitUntil(() => !sound.isPlaying);
-        PopCallback?.Invoke();
+        PopCallback?.Invoke(Text);
         Destroy(gameObject);
     }
 }

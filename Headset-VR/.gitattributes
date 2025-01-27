@@ -1,0 +1,15 @@
+Assets/Material/Fonts/*.asset filter=lfs diff=lfs merge=lfs -text
+Assets/Material/Fonts/NotoColorEmoji[[:space:]]Color1a.asset filter=lfs diff=lfs merge=lfs -text
+Assets/Material/Fonts/NotoColorEmoji[[:space:]]Color1b.asset filter=lfs diff=lfs merge=lfs -text
+Assets/Material/Fonts/NotoColorEmoji[[:space:]]Color2a.asset filter=lfs diff=lfs merge=lfs -text
+Assets/Material/Fonts/NotoColorEmoji[[:space:]]Color3a.asset filter=lfs diff=lfs merge=lfs -text
+Assets/Material/Fonts/NotoColorEmoji[[:space:]]Color4a.asset filter=lfs diff=lfs merge=lfs -text
+Assets/Material/Fonts/NotoColorEmoji[[:space:]]Color4b.asset filter=lfs diff=lfs merge=lfs -text
+Assets/Material/Fonts/NotoColorEmoji[[:space:]]Color5a.asset filter=lfs diff=lfs merge=lfs -text
+Assets/Material/Fonts/NotoColorEmoji[[:space:]]Color5a.asset filter=lfs diff=lfs merge=lfs -text
+Assets/Material/Fonts/NotoColorEmoji[[:space:]]Color4b.asset filter=lfs diff=lfs merge=lfs -text
+Assets/Material/Fonts/NotoColorEmoji[[:space:]]Color4a.asset filter=lfs diff=lfs merge=lfs -text
+Assets/Material/Fonts/NotoColorEmoji[[:space:]]Color3a.asset filter=lfs diff=lfs merge=lfs -text
+Assets/Material/Fonts/NotoColorEmoji[[:space:]]Color2a.asset filter=lfs diff=lfs merge=lfs -text
+Assets/Material/Fonts/NotoColorEmoji[[:space:]]Color1b.asset filter=lfs diff=lfs merge=lfs -text
+Assets/Material/Fonts/NotoColorEmoji[[:space:]]Color1a.asset filter=lfs diff=lfs merge=lfs -text

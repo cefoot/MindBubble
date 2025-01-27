@@ -14,6 +14,7 @@ public class AppController : MonoBehaviour
     public BubbleContent BubblePrefab;
     public UnityEvent StartedLoadingBubbles;
     public UnityEvent FinishedLoadingBubbles;
+    private Coroutine _loadRoutine;
     private const string OLD_KEYWORDS = "OLD_KEYWORDS";
 
     private void Awake()
@@ -21,7 +22,16 @@ public class AppController : MonoBehaviour
         Instance = this;
     }
 
+    private void OnEnable()
+    {
+        StartCoroutine(WaitToPlaceKeywords());
+    }
 
+    private IEnumerator WaitToPlaceKeywords()
+    {
+        yield return new WaitUntil(() => Buddy.Instance);
+        PlaceOldKeywords(Buddy.Instance.transform.position);
+    }
 
     public void PlaceOldKeywords(Vector3 worldPos)
     {
@@ -43,7 +53,8 @@ public class AppController : MonoBehaviour
 
     public void LoadBubbles(string hashTag)
     {
-        StartCoroutine(LoadBubblesAsync(hashTag));
+        if (_loadRoutine == null)
+            _loadRoutine = StartCoroutine(LoadBubblesAsync(hashTag));
     }
 
     public IEnumerator LoadBubblesAsync(string hashTag)
@@ -112,6 +123,7 @@ public class AppController : MonoBehaviour
         }
         finally
         {
+            _loadRoutine = null;
             FinishedLoadingBubbles?.Invoke();
         }
     }
@@ -172,9 +184,9 @@ public class AppController : MonoBehaviour
             var bubble = GameObject.Instantiate(BubblePrefab, transform);
             bubbles.Add(bubble);
             if (popAction != null)
-                bubble.PopCallback = () => popAction(item.Key);
+                bubble.PopCallback = popAction;
             bubble.Posts = item.Value.ToArray();
-            bubble.GetComponentInChildren<Text3D>().Text = item.Key;
+            bubble.Text = item.Key;
 
             // Set the bubble's position and rotation
             bubble.transform.position = bubblePosition;

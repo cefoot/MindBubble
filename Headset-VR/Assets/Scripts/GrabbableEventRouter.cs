@@ -10,7 +10,7 @@ public class GrabbableEventRouter : MonoBehaviour
 
     public UnityEvent Released;
 
-    void Awake()
+    private void OnEnable()
     {
         _grabbable = GetComponent<Grabbable>();
         if (_grabbable == null)

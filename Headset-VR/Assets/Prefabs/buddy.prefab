@@ -1071,8 +1071,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7866584724433717779}
-  - component: {fileID: 5150730091859753719}
   - component: {fileID: 7669096069507394458}
+  - component: {fileID: 2291090188326398580}
   m_Layer: 0
   m_Name: buddy
   m_TagString: Untagged
@@ -1099,36 +1099,6 @@ Transform:
   - {fileID: 2512850073656109164}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5150730091859753719
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3137440387468129049}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b0c081d2be479f41a184185ebcbc261, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  raycastManager: {fileID: 0}
-  planeManager: {fileID: 0}
-  EarthManager: {fileID: 0}
-  ModelPlacedOnFloor:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4311951003166956511}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
 --- !u!95 &7669096069507394458
 Animator:
   serializedVersion: 7
@@ -1151,6 +1121,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2291090188326398580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3137440387468129049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047c39fc57a063540af4d6872e367f88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3230863648687394650
 GameObject:
   m_ObjectHideFlags: 0
@@ -1834,7 +1816,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: OVRVirtualKeyboard, Oculus.VR
+        m_MethodName: AutoPopulate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnDeselect:
     m_PersistentCalls:
       m_Calls: []
@@ -1901,6 +1895,7 @@ GameObject:
   - component: {fileID: 4954865595000139997}
   - component: {fileID: 5809358906127498569}
   - component: {fileID: 5099152070683407676}
+  - component: {fileID: 8020174367769883327}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -2010,10 +2005,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Google.XR.ARCoreExtensions.Samples.Geospatial.GeospatialController,
-          Assembly-CSharp
-        m_MethodName: LoadBubbles
+      - m_Target: {fileID: 8020174367769883327}
+        m_TargetAssemblyTypeName: ButtonRouter, Assembly-CSharp
+        m_MethodName: DoStringClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2043,6 +2037,34 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &8020174367769883327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4657195817303575655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16ca11d1837a3f744aa66915d806b629, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TextSource: {fileID: 2332239344414711905}
+  StringClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: AppController, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5265932777949447946
 GameObject:
   m_ObjectHideFlags: 0
@@ -2395,8 +2417,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7184102710505149858}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.000000014901225, y: -0.000000053544603, z: -0.0000004111725,
-    w: 1}
+  m_LocalRotation: {x: -0.000000014901225, y: -0.000000053544603, z: -0.0000004111725, w: 1}
   m_LocalPosition: {x: 0.0000000024043296, y: 0.03803229, z: -0.000000002068134}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
